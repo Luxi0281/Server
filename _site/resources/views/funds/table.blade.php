@@ -1,22 +1,19 @@
+<div style="overflow: scroll; height: 550px;">
 <table class="table table-responsive" id="funds-table">
     <thead>
         <tr>
+            <th>Action</th>
+            <th>ID</th>
             <th>Title</th>
-        <th>Description</th>
-        <th>Logo</th>
-        <th>Picture</th>
-        <th>Link</th>
-            <th colspan="3">Action</th>
+            <th>Description</th>
+            <th>Logo</th>
+            <th>Picture</th>
+            <th>Link</th>
         </tr>
     </thead>
     <tbody>
     @foreach($funds as $funds)
         <tr>
-            <td>{!! $funds->title !!}</td>
-            <td>{!! $funds->description !!}</td>
-            <td>{!! $funds->logo !!}</td>
-            <td>{!! $funds->picture !!}</td>
-            <td>{!! $funds->link !!}</td>
             <td>
                 {!! Form::open(['route' => ['funds.destroy', $funds->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
@@ -26,7 +23,14 @@
                 </div>
                 {!! Form::close() !!}
             </td>
+            <td>{!! $funds->id !!}</td>
+            <td>{!! $funds->title !!}</td>
+            <td>{!! $funds->description !!}</td>
+            <td>{!! $funds->logo !!}</td>
+            <td>{!! $funds->picture !!}</td>
+            <td>{!! $funds->link !!}</td>
         </tr>
     @endforeach
     </tbody>
 </table>
+</div>
