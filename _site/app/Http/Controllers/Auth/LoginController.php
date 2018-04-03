@@ -25,12 +25,15 @@ class LoginController extends Controller
         $usersQuantity = DB::table('users')->count();
 
         if ($usersQuantity == 0) {
+            DB::table('users') -> truncate();
             return User::create([
-                'name' => 'Max_Luxi',
-                'email' => 'portnovmaxon@mail.ru',
-                'password' => bcrypt('1234', ['password']),
+                'name' => 'Max Luxi',
+                'email' => 'myemail@gmail.com',
+                'password' => bcrypt('admin', ['password']),
+                'isAdmin' => true,
                 'remember_token' => str_random(10)
             ]);
+
         }
     }
 
