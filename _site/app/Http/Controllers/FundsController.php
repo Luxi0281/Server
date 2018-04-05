@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreatefundsRequest;
-use App\Http\Requests\UpdatefundsRequest;
-use App\Repositories\fundsRepository;
+use App\Http\Requests\CreateFundRequest;
+use App\Http\Requests\UpdateFundRequest;
+use App\Repositories\FundsRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
-class fundsController extends AppBaseController
+class FundsController extends AppBaseController
 {
-    /** @var  fundsRepository */
+    /** @var  FundsRepository */
     private $fundsRepository;
 
-    public function __construct(fundsRepository $fundsRepo)
+    public function __construct(FundsRepository $fundsRepo)
     {
         $this->middleware('auth');
         $this->fundsRepository = $fundsRepo;
@@ -50,17 +50,17 @@ class fundsController extends AppBaseController
     /**
      * Store a newly created funds in storage.
      *
-     * @param CreatefundsRequest $request
+     * @param CreateFundRequest $request
      *
      * @return Response
      */
-    public function store(CreatefundsRequest $request)
+    public function store(CreateFundRequest $request)
     {
         $input = $request->all();
 
         $funds = $this->fundsRepository->create($input);
 
-        Flash::success('Funds saved successfully.');
+        Flash::success('Fund saved successfully.');
 
         return redirect(route('funds.index'));
     }
@@ -77,7 +77,7 @@ class fundsController extends AppBaseController
         $funds = $this->fundsRepository->findWithoutFail($id);
 
         if (empty($funds)) {
-            Flash::error('Funds not found');
+            Flash::error('Fund not found');
 
             return redirect(route('funds.index'));
         }
@@ -97,7 +97,7 @@ class fundsController extends AppBaseController
         $funds = $this->fundsRepository->findWithoutFail($id);
 
         if (empty($funds)) {
-            Flash::error('Funds not found');
+            Flash::error('Fund not found');
 
             return redirect(route('funds.index'));
         }
@@ -109,23 +109,23 @@ class fundsController extends AppBaseController
      * Update the specified funds in storage.
      *
      * @param  int              $id
-     * @param UpdatefundsRequest $request
+     * @param UpdateFundRequest $request
      *
      * @return Response
      */
-    public function update($id, UpdatefundsRequest $request)
+    public function update($id, UpdateFundRequest $request)
     {
         $funds = $this->fundsRepository->findWithoutFail($id);
 
         if (empty($funds)) {
-            Flash::error('Funds not found');
+            Flash::error('Fund not found');
 
             return redirect(route('funds.index'));
         }
 
         $funds = $this->fundsRepository->update($request->all(), $id);
 
-        Flash::success('Funds updated successfully.');
+        Flash::success('Fund updated successfully.');
 
         return redirect(route('funds.index'));
     }
@@ -142,14 +142,14 @@ class fundsController extends AppBaseController
         $funds = $this->fundsRepository->findWithoutFail($id);
 
         if (empty($funds)) {
-            Flash::error('Funds not found');
+            Flash::error('Fund not found');
 
             return redirect(route('funds.index'));
         }
 
         $this->fundsRepository->delete($id);
 
-        Flash::success('Funds deleted successfully.');
+        Flash::success('Fund deleted successfully.');
 
         return redirect(route('funds.index'));
     }

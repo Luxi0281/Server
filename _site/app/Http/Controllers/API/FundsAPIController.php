@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Requests\API\CreatefundsAPIRequest;
-use App\Http\Requests\API\UpdatefundsAPIRequest;
-use App\Models\funds;
-use App\Repositories\fundsRepository;
+use App\Http\Requests\API\CreateFundAPIRequest;
+use App\Http\Requests\API\UpdateFundAPIRequest;
+use App\Models\Fund;
+use App\Repositories\FundsRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
 use InfyOm\Generator\Criteria\LimitOffsetCriteria;
@@ -17,12 +17,12 @@ use Response;
  * @package App\Http\Controllers\API
  */
 
-class fundsAPIController extends AppBaseController
+class FundsAPIController extends AppBaseController
 {
-    /** @var  fundsRepository */
+    /** @var  FundsRepository */
     private $fundsRepository;
 
-    public function __construct(fundsRepository $fundsRepo)
+    public function __construct(FundsRepository $fundsRepo)
     {
         $this->fundsRepository = $fundsRepo;
     }
@@ -47,11 +47,11 @@ class fundsAPIController extends AppBaseController
      * Store a newly created funds in storage.
      * POST /funds
      *
-     * @param CreatefundsAPIRequest $request
+     * @param CreateFundAPIRequest $request
      *
      * @return Response
      */
-    public function store(CreatefundsAPIRequest $request)
+    public function store(CreateFundAPIRequest $request)
     {
         $input = $request->all();
 
@@ -70,14 +70,14 @@ class fundsAPIController extends AppBaseController
      */
     public function show($id)
     {
-        /** @var funds $funds */
+        /** @var Fund $funds */
         $funds = $this->fundsRepository->findWithoutFail($id);
 
         if (empty($funds)) {
-            return $this->sendError('Funds not found');
+            return $this->sendError('Fund not found');
         }
 
-        return $this->sendResponse($funds->toArray(), 'Funds retrieved successfully');
+        return $this->sendResponse($funds->toArray(), 'Fund retrieved successfully');
     }
 
     /**
@@ -85,24 +85,24 @@ class fundsAPIController extends AppBaseController
      * PUT/PATCH /funds/{id}
      *
      * @param  int $id
-     * @param UpdatefundsAPIRequest $request
+     * @param UpdateFundAPIRequest $request
      *
      * @return Response
      */
-    public function update($id, UpdatefundsAPIRequest $request)
+    public function update($id, UpdateFundAPIRequest $request)
     {
         $input = $request->all();
 
-        /** @var funds $funds */
+        /** @var Fund $funds */
         $funds = $this->fundsRepository->findWithoutFail($id);
 
         if (empty($funds)) {
-            return $this->sendError('Funds not found');
+            return $this->sendError('Fund not found');
         }
 
         $funds = $this->fundsRepository->update($input, $id);
 
-        return $this->sendResponse($funds->toArray(), 'funds updated successfully');
+        return $this->sendResponse($funds->toArray(), 'Fund updated successfully');
     }
 
     /**
@@ -115,15 +115,15 @@ class fundsAPIController extends AppBaseController
      */
     public function destroy($id)
     {
-        /** @var funds $funds */
+        /** @var Fund $funds */
         $funds = $this->fundsRepository->findWithoutFail($id);
 
         if (empty($funds)) {
-            return $this->sendError('Funds not found');
+            return $this->sendError('Fund not found');
         }
 
         $funds->delete();
 
-        return $this->sendResponse($id, 'Funds deleted successfully');
+        return $this->sendResponse($id, 'Fund deleted successfully');
     }
 }

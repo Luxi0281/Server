@@ -18,4 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::resource('funds', 'fundsAPIController');
+Route::resource('funds', 'FundsAPIController');
+Route::resource('users', 'UsersAPIController');

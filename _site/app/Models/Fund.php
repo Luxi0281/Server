@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string picture
  * @property string link
  */
-class funds extends Model
+class Fund extends Model
 {
     use SoftDeletes;
 

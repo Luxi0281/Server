@@ -3,7 +3,7 @@
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class fundsApiTest extends TestCase
+class FundsApiTest extends TestCase
 {
     use MakefundsTrait, ApiTestTrait, WithoutMiddleware, DatabaseTransactions;
 

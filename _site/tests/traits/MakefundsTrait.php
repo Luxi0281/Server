@@ -1,8 +1,8 @@
 <?php
 
 use Faker\Factory as Faker;
-use App\Models\funds;
-use App\Repositories\fundsRepository;
+use App\Models\Fund;
+use App\Repositories\FundsRepository;
 
 trait MakefundsTrait
 {
@@ -10,12 +10,12 @@ trait MakefundsTrait
      * Create fake instance of funds and save it in database
      *
      * @param array $fundsFields
-     * @return funds
+     * @return Fund
      */
     public function makefunds($fundsFields = [])
     {
-        /** @var fundsRepository $fundsRepo */
-        $fundsRepo = App::make(fundsRepository::class);
+        /** @var FundsRepository $fundsRepo */
+        $fundsRepo = App::make(FundsRepository::class);
         $theme = $this->fakefundsData($fundsFields);
         return $fundsRepo->create($theme);
     }
@@ -24,11 +24,11 @@ trait MakefundsTrait
      * Get fake instance of funds
      *
      * @param array $fundsFields
-     * @return funds
+     * @return Fund
      */
     public function fakefunds($fundsFields = [])
     {
-        return new funds($this->fakefundsData($fundsFields));
+        return new Fund($this->fakefundsData($fundsFields));
     }
 
     /**

@@ -9,6 +9,24 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public function roles()
+    {
+        return $this->belongsToMany('App\Role');
+    }
+
+    public function isAdmin()
+    {
+        foreach ($this->roles()->get() as $role)
+        {
+            if ($role->isAdmin == 1)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -24,6 +42,6 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'isAdmin',
     ];
 }

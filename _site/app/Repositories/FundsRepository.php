@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\funds;
+use App\Models\Fund;
 use InfyOm\Generator\Common\BaseRepository;
 
 /**
@@ -10,11 +10,11 @@ use InfyOm\Generator\Common\BaseRepository;
  * @package App\Repositories
  * @version December 18, 2017, 4:16 pm UTC
  *
- * @method funds findWithoutFail($id, $columns = ['*'])
- * @method funds find($id, $columns = ['*'])
- * @method funds first($columns = ['*'])
+ * @method Fund findWithoutFail($id, $columns = ['*'])
+ * @method Fund find($id, $columns = ['*'])
+ * @method Fund first($columns = ['*'])
 */
-class fundsRepository extends BaseRepository
+class FundsRepository extends BaseRepository
 {
     /**
      * @var array
@@ -32,6 +32,6 @@ class fundsRepository extends BaseRepository
      **/
     public function model()
     {
-        return funds::class;
+        return Fund::class;
     }
 }

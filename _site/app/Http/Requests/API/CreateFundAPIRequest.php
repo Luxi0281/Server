@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\API;
 
-use Illuminate\Foundation\Http\FormRequest;
-use App\Models\funds;
+use App\Models\Fund;
+use InfyOm\Generator\Request\APIRequest;
 
-class UpdatefundsRequest extends FormRequest
+class CreateFundAPIRequest extends APIRequest
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -25,6 +24,6 @@ class UpdatefundsRequest extends FormRequest
      */
     public function rules()
     {
-        return funds::$rules;
+        return Fund::$rules;
     }
 }

@@ -22,10 +22,6 @@ class LoginController extends Controller
 
     public function addUser()
     {
-        $usersQuantity = DB::table('users')->count();
-
-        if ($usersQuantity == 0) {
-            DB::table('users') -> truncate();
             return User::create([
                 'name' => 'Max Luxi',
                 'email' => 'myemail@gmail.com',
@@ -33,8 +29,6 @@ class LoginController extends Controller
                 'isAdmin' => true,
                 'remember_token' => str_random(10)
             ]);
-
-        }
     }
 
     use AuthenticatesUsers;
@@ -53,7 +47,14 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->addUser();
+        $usersQuantity = DB::table('users')->count();
+        if ($usersQuantity == 0)
+        {
+            DB::table('users') -> truncate();
+            $this->addUser();
+        }
+
+        
         $this->middleware('guest')->except('logout');
     }
 }
