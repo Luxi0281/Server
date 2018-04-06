@@ -55,9 +55,9 @@ class FundsAPIController extends AppBaseController
     {
         $input = $request->all();
 
-        $funds = $this->fundsRepository->create($input);
+        $fund = $this->fundsRepository->create($input);
 
-        return $this->sendResponse($funds->toArray(), 'Funds saved successfully');
+        return $this->sendResponse($fund->toArray(), 'Fund saved successfully');
     }
 
     /**
@@ -70,14 +70,14 @@ class FundsAPIController extends AppBaseController
      */
     public function show($id)
     {
-        /** @var Fund $funds */
-        $funds = $this->fundsRepository->findWithoutFail($id);
+        /** @var Fund $fund */
+        $fund = $this->fundsRepository->findWithoutFail($id);
 
-        if (empty($funds)) {
+        if (empty($fund)) {
             return $this->sendError('Fund not found');
         }
 
-        return $this->sendResponse($funds->toArray(), 'Fund retrieved successfully');
+        return $this->sendResponse($fund->toArray(), 'Fund retrieved successfully');
     }
 
     /**
@@ -93,16 +93,16 @@ class FundsAPIController extends AppBaseController
     {
         $input = $request->all();
 
-        /** @var Fund $funds */
-        $funds = $this->fundsRepository->findWithoutFail($id);
+        /** @var Fund $fund */
+        $fund = $this->fundsRepository->findWithoutFail($id);
 
-        if (empty($funds)) {
+        if (empty($fund)) {
             return $this->sendError('Fund not found');
         }
 
-        $funds = $this->fundsRepository->update($input, $id);
+        $fund = $this->fundsRepository->update($input, $id);
 
-        return $this->sendResponse($funds->toArray(), 'Fund updated successfully');
+        return $this->sendResponse($fund->toArray(), 'Fund updated successfully');
     }
 
     /**

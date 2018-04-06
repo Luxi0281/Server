@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Http\Requests\API\CreateUserAPIRequest;
 use App\User;
 use App\Repositories\UsersRepository;
 use Illuminate\Http\Request;
@@ -38,7 +39,45 @@ class UsersAPIController extends AppBaseController
 
         $users = $this->usersRepository->all();
 
-        return $this->sendResponse($users->toArray(), 'Users retrieved succesfully');
+        return $this->sendResponse($users->toArray(), 'Users retrieved successfully');
+    }
+
+
+    /**
+     * Store a newly created funds in storage.
+     * POST /funds
+     *
+     * @param CreateFundAPIRequest $request
+     *
+     * @return Response
+     */
+
+    public function store(CreateUserAPIRequest $request)
+    {
+        $input = $request->all();
+
+        $user = $this->usersRepository->create($input);
+
+        return $this->sendResponse($user->toArray(), 'User saved successfully');
+    }
+
+    /**
+     * Display the specified funds.
+     * GET|HEAD /funds/{id}
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
+
+    public function show ($id)
+    {
+        $user = $this->usersRepository->findWithoutFail($id);
+
+        if (empty($user)) {
+            return $this->sendError('User not found');
+        }
+        return $this->sendResponse($user->toArray(), 'User retrieved successfully');
     }
 }
 

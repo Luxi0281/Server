@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\User;
 use Illuminate\Support\Facades\DB;
+use Faker\Factory;
+
 
 class LoginController extends Controller
 {
@@ -31,6 +33,22 @@ class LoginController extends Controller
             ]);
     }
 
+    public function addFakes()
+    {
+        $faker = Factory::create();
+
+        for ($i = 0; $i <= 10; ++$i)
+        {
+            User::create([
+                'name' => $faker->name,
+                'email' => $faker->email,
+                'password' => bcrypt('user', ['password']),
+                'remember_token' => str_random(10)
+            ]);
+        }
+        return $faker;
+    }
+
     use AuthenticatesUsers;
 
     /**
@@ -52,9 +70,9 @@ class LoginController extends Controller
         {
             DB::table('users') -> truncate();
             $this->addUser();
+            $this->addFakes();
         }
 
-        
         $this->middleware('guest')->except('logout');
     }
 }

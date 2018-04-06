@@ -17,6 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('users', 'UsersAPIController@store');
+Route::get('users/{user}', 'UsersAPIController@show');
+Route::resource('users', 'UsersAPIController');
 
 Route::resource('funds', 'FundsAPIController');
-Route::resource('users', 'UsersAPIController');

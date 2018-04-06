@@ -75,7 +75,6 @@
                     @endauth
                 </div>
             @endif
-
             <div class="content">
                 <div class="title m-b-md">
                     Welcome to <br />Luxi & Nash Server
