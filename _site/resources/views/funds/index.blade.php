@@ -17,6 +17,8 @@
         </div>
         <div class="text-center">
             <a class="btn btn-primary" style="width: 300px; padding: 25px; font-size: 24px; font-weight: bold" href="{!! route('funds.create') !!}">Add New</a>
+            <a class="btn btn-success" style="width: 300px; padding: 25px; font-size: 24px; font-weight: bold" href="{!! url('api/funds') !!}">Open JSON</a>
+            <a onclick="" class="btn btn-warning" style="width: 300px; padding: 25px; font-size: 24px; font-weight: bold" >Download JSON</a>
         </div>
     </div>
 @endsection

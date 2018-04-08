@@ -11,13 +11,25 @@
 |
 */
 
+use App\Models\Fund;
+use Laracasts\Flash\Flash;
+
 Route::get('/', function () {
-    return view('welcome');
+    $funds = Fund::all();
+    return view('welcome', compact('funds'));
 });
+Route::get('fund/{fund}', function ($id){
+
+    $fund = Fund::find($id);
+
+    if (empty($fund)){return view ('error.notfound');}
+
+    return view ('showFund', compact('fund'));
+});
+
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index');
-
-Route::resource('funds', 'fundsController');
+Route::get('admin/home', 'HomeController@index');
+Route::resource('admin/funds', 'FundsController');

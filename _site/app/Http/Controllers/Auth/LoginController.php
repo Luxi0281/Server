@@ -7,6 +7,8 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\User;
 use Illuminate\Support\Facades\DB;
 use Faker\Factory;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 
 class LoginController extends Controller
@@ -22,7 +24,12 @@ class LoginController extends Controller
     |
     */
 
-    public function addUser()
+    public function logout(Request $request) {
+        Auth::logout();
+        return redirect('/');
+    }
+
+    public function addAdmin()
     {
             return User::create([
                 'name' => 'Max Luxi',
@@ -56,7 +63,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = 'admin/home';
 
     /**
      * Create a new controller instance.
@@ -69,8 +76,13 @@ class LoginController extends Controller
         if ($usersQuantity == 0)
         {
             DB::table('users') -> truncate();
-            $this->addUser();
+            $this->addAdmin();
             $this->addFakes();
+        }
+
+        if (DB::table('users')->where('isAdmin', true)->doesntExist())
+        {
+            $this->addAdmin();
         }
 
         $this->middleware('guest')->except('logout');

@@ -4,28 +4,11 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
     use Notifiable;
-
-    public function roles()
-    {
-        return $this->belongsToMany('App\Role');
-    }
-
-    public function isAdmin()
-    {
-        foreach ($this->roles()->get() as $role)
-        {
-            if ($role->isAdmin == 1)
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
 
     /**
      * The attributes that are mass assignable.
@@ -44,4 +27,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token', 'isAdmin',
     ];
+
+    public function isAdmin()
+    {
+       if (Auth::user()->getAuthIdentifierName() == "Max Luxi") return true;
+    }
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>InfyOm Laravel Generator</title>
+    <title>Log in the administrative section</title>
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -33,8 +33,27 @@
 
 </head>
 <body class="hold-transition login-page">
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title text-center" id="exampleModalLabel">Warning</h1>
+            </div>
+            <div class="modal-body">
+                This is restricted area provided only for administrators of the current project. <br>
+                Are you sure you want to continue?
+            </div>
+            <div class="modal-footer">
+                <a href="{{url('/')}}"> <button type="button" class="btn btn-danger">No, I am a regular user. Take me back to the main page </button></a>
+                <button type="button" class="btn btn-success" data-dismiss="modal">Yes, I am</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="login-box">
 
+    <h1 class = "text-center">Administrative <br>Section</h1>
     <!-- /.login-logo -->
     <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p>
@@ -79,7 +98,7 @@
         </form>
 
         <a href="{{ url('/password/reset') }}">I forgot my password</a><br>
-        <a href="{{ url('/register') }}" class="text-center">Register a new account</a>
+        <!-- a href="{{ url('/register') }}" class="text-center">Register a new account</a> -->
 
     </div>
     <!-- /.login-box-body -->
@@ -101,6 +120,17 @@
             increaseArea: '20%' // optional
         });
     });
+</script>
+
+<script type="text/javascript">
+        $(window).on('load',function(){
+            $('#myModal').modal('show');
+        });
+
+    $('#myModal').modal({
+        backdrop: 'static',
+        keyboard: false
+    })
 </script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>InfyOm Generator</title>
+    <title>Administrative Section</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
     <!-- Bootstrap 3.3.7 -->
@@ -26,6 +26,24 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
+    <style>
+
+        span {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .skin-blue .main-header .navbar {
+            background-color: #2980B9 !important;
+        }
+
+        .skin-blue .main-header .logo {
+            background-color: #2980B9 !important;
+            color: #fff;
+            border-bottom: 0 solid transparent;
+        }
+    </style>
+
     @yield('css')
 </head>
 
@@ -36,43 +54,42 @@
         <header class="main-header">
 
             <!-- Logo -->
-            <a href="#" class="logo">
-                <b>InfyOm</b>
+            <a href="{!! url('admin/home') !!}" class="logo">
+                <b>Admin Section</b>
             </a>
 
             <!-- Header Navbar -->
-            <nav class="navbar navbar-static-top" role="navigation">
+            <nav class="navbar navbar-dark bg-dark" role="navigation">
                 <!-- Sidebar toggle button-->
-                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                    <span class="sr-only">Toggle navigation</span>
-                </a>
+
                 <!-- Navbar Right Menu -->
-                <div class="navbar-custom-menu">
+                <div class="navbar-custom-menu navbar-dark bg-dark">
                     <ul class="nav navbar-nav">
                         <!-- User Account Menu -->
                         <li class="dropdown user user-menu">
                             <!-- Menu Toggle Button -->
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <!-- The user image in the navbar-->
-                                <img src="http://infyom.com/images/logo/blue_logo_150x150.jpg"
+                                <img src="https://i.pinimg.com/originals/6b/84/23/6b8423c6c6b31415714ebb12c6c55478.png"
                                      class="user-image" alt="User Image"/>
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
                                 <span class="hidden-xs">{!! Auth::user()->name !!}</span>
                             </a>
+
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
                                 <li class="user-header">
-                                    <img src="http://infyom.com/images/logo/blue_logo_150x150.jpg"
+                                    <img src="https://i.pinimg.com/originals/6b/84/23/6b8423c6c6b31415714ebb12c6c55478.png"
                                          class="img-circle" alt="User Image"/>
                                     <p>
                                         {!! Auth::user()->name !!}
-                                        <small>Member since {!! Auth::user()->created_at->format('M. Y') !!}</small>
+                                        <small>Server Administration </small>
                                     </p>
                                 </li>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                        <a href="{{ url('/') }}" class="btn btn-default btn-flat">Back to main page</a>
                                     </div>
                                     <div class="pull-right">
                                         <a href="{!! url('/logout') !!}" class="btn btn-default btn-flat"
@@ -100,7 +117,7 @@
 
         <!-- Main Footer -->
         <footer class="main-footer" style="max-height: 100px;text-align: center">
-            <strong>Copyright © 2018 <a href="#">Company</a>.</strong> All rights reserved.
+            <strong>Copyright © 2018 <a href="#">Luxi & Nash Company</a>.</strong> All rights reserved.
         </footer>
 
     </div>
@@ -119,9 +136,6 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{!! url('/') !!}">
-                    InfyOm Generator
-                </a>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">

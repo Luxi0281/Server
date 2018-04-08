@@ -1,85 +1,55 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@include('other.head')
+<body>
+@include('other.navigation')
+<!-- Page Content -->
+<div class="container text-center">
+    <!-- Introduction Row -->
+    <br>
+        <img class = "center-block" src = "https://cdn0.iconfinder.com/data/icons/Free-Icons-Shimmer-01-Creative-Freedom/256/favourites.png" height="128" width="128">
+        <h1 class = "text-center">Welcome to Luxi & Nash Charity Foundation <br>
+        <small>It's Nice to Meet You!</small>
+        </h1>
+    <br>
+    <h2><u>What are charity organizations?</u></h2>
+    <p>A <b>charitable organization</b> or <b>charity</b> is a non-profit organization (NPO) whose primary objectives are philanthropy and social well-being (e.g. charitable, educational, religious, or other activities serving the public interest or common good).</p>
 
-        <title>Our Server</title>
+    <p>  The legal definition of a charitable organisation (and of charity) varies between countries and in some instances regions of the country. The regulation, the tax treatment, and the way in which charity law affects charitable organizations also vary.</p>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <p>   Financial figures (e.g. tax refund, revenue from fundraising, revenue from sale of goods and services or revenue from investment) are important indicators to assess the financial sustainability of a charity, especially to charity evaluators. This information can impact a charity's reputation with donors and societies, and thus the charity's financial gains. </p>
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+    <p>  Charitable organisations often depend partly on donations from businesses. Such donations to charitable organisations represent a major form of corporate philanthropy.</p>
 
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                    @endauth
-                </div>
-            @endif
-            <div class="content">
-                <div class="title m-b-md">
-                    Welcome to <br />Luxi & Nash Server
-                </div>
+    <!-- Team Members Row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="my-4 text-center">We suggest you following Russian Charity Organizations: </h2>
         </div>
+        @foreach($funds as $fund)
+        <div class="col-lg-4 col-sm-6 text-center mb-4 border">
+            <img class="rounded-circle img-fluid d-block mx-auto" src="{!! $fund->logo !!}" alt="" width="150" height="150" style="border: 2px solid grey; margin-bottom: 15px; margin-top: 15px">
+            <h3>{!! $fund->title !!}</h3>
+            <p style="height: 150px; overflow: hidden; text-overflow: ellipsis" class = "text-center">{!! $fund->description !!}</p>
+          <button class = "btn btn-primary" style="margin: 30px"><a class="link" href=""></a> Click here to show <br>full description</button>
         </div>
-    </body>
+        @endforeach
+
+    </div>
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+
+
+<!-- Bootstrap core JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+@include('other.footer')
+<script>
+    $(window).on('beforeunload', function(){
+        $(window).scrollTop(0);
+    });
+</script>
+</body>
 </html>
