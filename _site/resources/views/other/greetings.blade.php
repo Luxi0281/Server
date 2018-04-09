@@ -3,7 +3,7 @@
 @section('content')
     <div class = "well">
     <div class = "container" style= "font-size: 24px;">
-        <h1 class = "text-center">Here you can manage all the data you need <br/><br> Including...</h1>
+        <h1 class = "text-center">Here you can manage all the data you need <br/><br> Including: </h1>
         <br><br>
         <div class = "row">
             <ul class = "col-lg-6">

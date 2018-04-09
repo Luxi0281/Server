@@ -25,10 +25,10 @@
             </td>
             <td>{!! $funds->id !!}</td>
             <td>{!! $funds->title !!}</td>
-            <td>{!! $funds->description !!}</td>
-            <td>{!! $funds->logo !!}</td>
-            <td>{!! $funds->picture !!}</td>
-            <td>{!! $funds->link !!}</td>
+            <td class="different">{!! $funds->description !!}</td>
+            <td><a href="{!! $funds->logo !!}">Logo Link</a></td>
+            <td><a href="{!! $funds->picture !!}">Picture Link</a></td>
+            <td><a href="{!! $funds->link !!}">{!! $funds->link !!}</a></td>
         </tr>
     @endforeach
     </tbody>

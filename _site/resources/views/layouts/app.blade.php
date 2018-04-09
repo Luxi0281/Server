@@ -42,6 +42,25 @@
             color: #fff;
             border-bottom: 0 solid transparent;
         }
+
+        .actionButton
+        {
+            width: 300px;
+            padding: 25px;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 10px;
+        }
+
+        th
+        {
+            text-align: center;
+        }
+
+        td:not(.different)
+        {
+            text-align: center;
+        }
     </style>
 
     @yield('css')
