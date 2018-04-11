@@ -20,6 +20,16 @@
         transition: all 0.5s!important;
     }
 
+    .sideButtons
+    {
+        width:100%;
+        height: 100%;
+        display:inline-block;
+        overflow: auto;
+        white-space: nowrap;
+        margin:0px auto;
+    }
+
     nav.scrollUp {
         transform: translateY(-90px)!important;
     }
@@ -43,9 +53,4 @@
         height: 60px;
     }
 </style>
-    <script>
-        $(window).on('beforeunload', function(){
-            $(window).scrollTop(0);
-        });
-    </script>
 </head>

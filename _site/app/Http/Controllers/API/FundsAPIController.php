@@ -115,14 +115,14 @@ class FundsAPIController extends AppBaseController
      */
     public function destroy($id)
     {
-        /** @var Fund $funds */
-        $funds = $this->fundsRepository->findWithoutFail($id);
+        /** @var Fund $fund */
+        $fund = $this->fundsRepository->findWithoutFail($id);
 
-        if (empty($funds)) {
+        if (empty($fund)) {
             return $this->sendError('Fund not found');
         }
 
-        $funds->delete();
+        $fund->delete();
 
         return $this->sendResponse($id, 'Fund deleted successfully');
     }

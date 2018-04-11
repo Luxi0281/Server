@@ -21,10 +21,12 @@ Route::get('/', function () {
 Route::get('fund/{fund}', function ($id){
 
     $fund = Fund::find($id);
+    $previous = Fund::where('id', '<', $fund->id)->max('id');
+    $next = Fund::where('id', '>', $fund->id)->min('id');
 
     if (empty($fund)){return view ('error.notfound');}
 
-    return view ('showFund', compact('fund'));
+    return view ('showFund', compact('fund'))->with('previous', $previous)->with('next', $next);
 });
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');

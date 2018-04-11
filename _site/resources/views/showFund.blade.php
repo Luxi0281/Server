@@ -3,18 +3,40 @@
 @include('other.head')
 <body>
 @include ('other.navigation')
-<a href="{{url('/')}}" class = "btn btn-primary"><- Back </a>
+
 <div class="container" style="padding-top: 100px;">
+    <div class = "sideButtons">
+        <div style="float: left">
+            <a href = "{{URL::to('fund/'.$previous)}}}" class = "btn btn-primary text-center" style="color: white; font-size: 20px; padding: 15px;"> << Previous Fund </a>
+        </div>
+        <div style="float: right">
+            <a href = "{{URL::to('fund/'.$next)}}}" class = "btn btn-primary text-center" style="color: white; font-size: 20px; padding: 15px;" >Next Fund >> </a>
+        </div>
+    </div>
     <div class="text-center" style="padding: 15px 80px 30px 80px;">
         <img class="rounded-circle img-fluid d-block mx-auto" src="{!! $fund->logo !!}" alt="" width="250" height="250" style="border: 3px solid grey; margin-bottom: 15px; margin-top: 15px">
-        <h1>{!! $fund->title !!}</h1><br>
-        <h3>Description: </h3>
+        <br>
+        <h1>{!! $fund->title !!}</h1>
+        <br>
+        <h2>Official Site Link: </h2>
+        <a href="{!! $fund->link !!}">{!! $fund->link !!}</a>
+        <br>
+        <br>
+        <h2>Description: </h2>
         <br>
         <p class = "text-center">{!! $fund->description !!}</p><br>
-        <h3>Official Site Link: </h3>
-        <a href="{!! $fund->link !!}">{!! $fund->link !!}</a>
     </div>
+    <!--div class = "row ml-1 text-center m-5">
+        <div class = "col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <a href = "{{URL::to('fund/'.$previous)}}}" class = "btn btn-primary" style="color: white">Previous Fund</a>
+        </div>
+
+        <div class = "col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <a href = "{{URL::to('fund/'.$next)}}}" class = "btn btn-primary" style="color: white">Next Fund</a>
+        </div>
+    </div-->
 </div>
+@include ('other.modal')
 @include ('other.footer')
 </body>
 @include ('other.scripts')

@@ -74,15 +74,15 @@ class FundsController extends AppBaseController
      */
     public function show($id)
     {
-        $funds = $this->fundsRepository->findWithoutFail($id);
+        $fund = $this->fundsRepository->findWithoutFail($id);
 
-        if (empty($funds)) {
+        if (empty($fund)) {
             Flash::error('Fund not found');
 
             return redirect(route('funds.index'));
         }
 
-        return view('funds.show')->with('funds', $funds);
+        return view('funds.show')->with('funds', $fund);
     }
 
     /**
@@ -94,15 +94,15 @@ class FundsController extends AppBaseController
      */
     public function edit($id)
     {
-        $funds = $this->fundsRepository->findWithoutFail($id);
+        $fund = $this->fundsRepository->findWithoutFail($id);
 
-        if (empty($funds)) {
+        if (empty($fund)) {
             Flash::error('Fund not found');
 
             return redirect(route('funds.index'));
         }
 
-        return view('funds.edit')->with('funds', $funds);
+        return view('funds.edit')->with('funds', $fund);
     }
 
     /**
@@ -115,15 +115,15 @@ class FundsController extends AppBaseController
      */
     public function update($id, UpdateFundRequest $request)
     {
-        $funds = $this->fundsRepository->findWithoutFail($id);
+        $fund = $this->fundsRepository->findWithoutFail($id);
 
-        if (empty($funds)) {
+        if (empty($fund)) {
             Flash::error('Fund not found');
 
             return redirect(route('funds.index'));
         }
 
-        $funds = $this->fundsRepository->update($request->all(), $id);
+        $fund = $this->fundsRepository->update($request->all(), $id);
 
         Flash::success('Fund updated successfully.');
 
@@ -139,9 +139,9 @@ class FundsController extends AppBaseController
      */
     public function destroy($id)
     {
-        $funds = $this->fundsRepository->findWithoutFail($id);
+        $fund = $this->fundsRepository->findWithoutFail($id);
 
-        if (empty($funds)) {
+        if (empty($fund)) {
             Flash::error('Fund not found');
 
             return redirect(route('funds.index'));
