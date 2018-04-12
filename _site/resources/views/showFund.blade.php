@@ -7,10 +7,14 @@
 <div class="container" style="padding-top: 100px;">
     <div class = "sideButtons">
         <div style="float: left">
+            @if($previous)
             <a href = "{{URL::to('fund/'.$previous)}}}" class = "btn btn-primary text-center" style="color: white; font-size: 20px; padding: 15px;"> << Previous Fund </a>
+                @endif
         </div>
         <div style="float: right">
+            @if($next)
             <a href = "{{URL::to('fund/'.$next)}}}" class = "btn btn-primary text-center" style="color: white; font-size: 20px; padding: 15px;" >Next Fund >> </a>
+                @endif
         </div>
     </div>
     <div class="text-center" style="padding: 15px 80px 30px 80px;">
@@ -39,5 +43,7 @@
 @include ('other.modal')
 @include ('other.footer')
 </body>
-@include ('other.scripts')
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="{{ URL::asset('js/scripts.js') }}" type="text/javascript"></script>
 </html>
