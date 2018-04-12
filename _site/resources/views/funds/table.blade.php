@@ -6,9 +6,12 @@
             <th>ID</th>
             <th>Title</th>
             <th>Description</th>
-            <th>Logo</th>
             <th>Picture</th>
             <th>Link</th>
+            <th>E-Mail</th>
+            <th>Phone</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
         </tr>
     </thead>
     <tbody>
@@ -27,9 +30,12 @@
             <td>{!! $funds->id !!}</td>
             <td>{!! $funds->title !!}</td>
             <td class="different">{!! $funds->description !!}</td>
-            <td><a href="{!! $funds->logo !!}">Logo Link</a></td>
             <td><a href="{!! $funds->picture !!}">Picture Link</a></td>
             <td><a href="{!! $funds->link !!}">{!! $funds->link !!}</a></td>
+            <td>{!! $funds->email !!}</td>
+            <td>{!! $funds->phone !!}</td>
+            <td>{!! $funds->latitude !!}</td>
+            <td>{!! $funds->longitude !!}</td>
         </tr>
     @endforeach
     </tbody>

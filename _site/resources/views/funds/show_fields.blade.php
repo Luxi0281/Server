@@ -16,12 +16,6 @@
     <p>{!! $funds->description !!}</p>
 </div>
 
-<!-- Logo Field -->
-<div class="form-group">
-    {!! Form::label('logo', 'Logo:') !!}
-    <p>{!! $funds->logo !!}</p>
-</div>
-
 <!-- Picture Field -->
 <div class="form-group">
     {!! Form::label('picture', 'Picture:') !!}
@@ -32,6 +26,30 @@
 <div class="form-group">
     {!! Form::label('link', 'Link:') !!}
     <p>{!! $funds->link !!}</p>
+</div>
+
+<!-- E-Mail Field -->
+<div class="form-group">
+    {!! Form::label('email', 'E-Mail:') !!}
+    <p>{!! $funds->email !!}</p>
+</div>
+
+<!-- Phone Field -->
+<div class="form-group">
+    {!! Form::label('phone', 'Phone:') !!}
+    <p>{!! $funds->phone !!}</p>
+</div>
+
+<!-- Latitude Field -->
+<div class="form-group">
+    {!! Form::label('latitude', 'Latitude:') !!}
+    <p>{!! $funds->latitude !!}</p>
+</div>
+
+<!-- Longitude Field -->
+<div class="form-group">
+    {!! Form::label('longitude', 'Longitude:') !!}
+    <p>{!! $funds->longitude !!}</p>
 </div>
 
 <!-- Created At Field -->

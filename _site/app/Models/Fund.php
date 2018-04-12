@@ -12,9 +12,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *
  * @property string title
  * @property string description
- * @property string logo
  * @property string picture
  * @property string link
+ * @property string email
+ * @property string phone
  */
 class Fund extends Model
 {
@@ -29,9 +30,12 @@ class Fund extends Model
     public $fillable = [
         'title',
         'description',
-        'logo',
         'picture',
-        'link'
+        'link',
+        'email',
+        'phone',
+        'longitude',
+        'latitude'
     ];
 
     /**
@@ -42,9 +46,12 @@ class Fund extends Model
     protected $casts = [
         'title' => 'string',
         'description' => 'string',
-        'logo' => 'string',
         'picture' => 'string',
-        'link' => 'string'
+        'link' => 'string',
+        'email' => 'string',
+        'phone' => 'string',
+        'longitude' => 'decimal',
+        'latitude' => 'decimal'
     ];
 
     /**

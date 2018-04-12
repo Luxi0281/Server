@@ -17,9 +17,12 @@ class CreatefundsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('description');
-            $table->string('logo');
             $table->string('picture');
             $table->string('link');
+            $table->string('email')->unique();
+            $table->string('phone');
+            $table->decimal('latitude', 8,6);
+            $table->decimal('longitude', 9, 6);
             $table->timestamps();
             $table->softDeletes();
         });

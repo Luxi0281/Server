@@ -17,4 +17,6 @@ $(document).ready(function () {
         c = currentScrollTop;
     });
 
+    new WOW().init();
+
 });
