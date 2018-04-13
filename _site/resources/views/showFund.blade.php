@@ -50,7 +50,11 @@
 <script src="https://maps.google.com/maps/api/js"></script>
 <script>
     function regular_map() {
-        var var_location = new google.maps.LatLng(55.750347, 37.755877);
+
+        var latitude = {!! json_encode($fund->latitude) !!};
+        var longitude = {!! json_encode($fund->longitude) !!};
+
+        var var_location = new google.maps.LatLng(latitude, longitude);
 
         var var_mapoptions = {
             center: var_location,
