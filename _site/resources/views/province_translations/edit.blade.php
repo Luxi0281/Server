@@ -1,0 +1,23 @@
+@extends('layouts.app')
+
+@section('content')
+    <section class="content-header">
+        <h1>
+            Province Translation
+        </h1>
+   </section>
+   <div class="content">
+       @include('adminlte-templates::common.errors')
+       <div class="box box-primary">
+           <div class="box-body">
+               <div class="row">
+                   {!! Form::model($provinceTranslation, ['route' => ['provinceTranslations.update', $provinceTranslation->id], 'method' => 'patch']) !!}
+
+                        @include('province_translations.fields')
+
+                   {!! Form::close() !!}
+               </div>
+           </div>
+       </div>
+   </div>
+@endsection

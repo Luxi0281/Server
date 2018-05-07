@@ -3,39 +3,28 @@
 namespace App\Models;
 
 use Eloquent as Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class funds
+ * Class Fund
  * @package App\Models
- * @version December 18, 2017, 4:16 pm UTC
+ * @version May 7, 2018, 4:29 pm UTC
  *
- * @property string title
- * @property string description
  * @property string picture
  * @property string link
  * @property string email
  * @property string phone
+ * @property integer location_id
  */
 class Fund extends Model
 {
-    use SoftDeletes;
-
     public $table = 'funds';
-    
-
-    protected $dates = ['deleted_at'];
-
 
     public $fillable = [
-        'title',
-        'description',
         'picture',
         'link',
         'email',
         'phone',
-        'longitude',
-        'latitude'
+        'location_id'
     ];
 
     /**
@@ -44,14 +33,11 @@ class Fund extends Model
      * @var array
      */
     protected $casts = [
-        'title' => 'string',
-        'description' => 'string',
         'picture' => 'string',
         'link' => 'string',
         'email' => 'string',
         'phone' => 'string',
-        'longitude' => 'decimal',
-        'latitude' => 'decimal'
+        'location_id' => 'integer'
     ];
 
     /**
@@ -60,7 +46,11 @@ class Fund extends Model
      * @var array
      */
     public static $rules = [
-        'title' => 'required'
+        'picture' => 'required',
+        'link' => 'required',
+        'email' => 'required',
+        'phone' => 'required',
+        'location_id' => 'required'
     ];
 
     

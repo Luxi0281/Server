@@ -22,16 +22,6 @@
     <img data-wow-delay="1.6s" class = "wow animated bounceIn center-block" src = "https://www.charitableevolution.com/wp-content/uploads/2017/04/Logo_LighBlue_Medium-Rotation.gif">
     <h2 class="wow animated bounceInRight my-4 text-center">We suggest you the following Russian Charity Organizations: </h2>
     <div class="row">
-        @foreach($funds as $fund)
-        <div data-wow-delay="0.5s" class="wow animated bounceInUp col-lg-4 col-sm-6 col-md-6 col-sm-12 col-xs-12 text-center mb-4" id="fundDiv">
-            <div class="border" style = "margin: 5px; padding: 5px;">
-            <img class="rounded-circle img-fluid d-block mx-auto" src="{!! $fund->picture !!}" alt="" width="150" height="150" style="border: 2px solid grey; margin-bottom: 15px; margin-top: 15px">
-            <h3>{!! $fund->title !!}</h3>
-            <p style="height: 150px; overflow: hidden; text-overflow: ellipsis" class = "text-center">{!! $fund->description !!}</p>
-         <a class="btn btn-primary" href="/fund/{!! $fund->id !!}" style="margin: 30px"> Click here to show <br>full description </a>
-            </div>
-        </div>
-        @endforeach
     </div>
 </div>
 

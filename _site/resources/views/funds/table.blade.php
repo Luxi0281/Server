@@ -1,43 +1,32 @@
-<div style="overflow: scroll; height: 550px;">
 <table class="table table-responsive" id="funds-table">
     <thead>
         <tr>
-            <th>Action</th>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Description</th>
             <th>Picture</th>
-            <th>Link</th>
-            <th>E-Mail</th>
-            <th>Phone</th>
-            <th>Latitude</th>
-            <th>Longitude</th>
+        <th>Link</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Location Id</th>
+            <th colspan="3">Action</th>
         </tr>
     </thead>
     <tbody>
-    @foreach($funds as $funds)
+    @foreach($funds as $fund)
         <tr>
+            <td>{!! $fund->picture !!}</td>
+            <td>{!! $fund->link !!}</td>
+            <td>{!! $fund->email !!}</td>
+            <td>{!! $fund->phone !!}</td>
+            <td>{!! $fund->location_id !!}</td>
             <td>
-                {!! Form::open(['route' => ['funds.destroy', $funds->id], 'method' => 'delete']) !!}
+                {!! Form::open(['route' => ['funds.destroy', $fund->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
-                    <a href="{!! route('funds.show', [$funds->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
-                    <a href="{!! route('funds.edit', [$funds->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
-                    <a href="{!! url('api/funds/'.$funds->id) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-file"></i></a>
+                    <a href="{!! route('funds.show', [$fund->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+                    <a href="{!! route('funds.edit', [$fund->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
                     {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                 </div>
                 {!! Form::close() !!}
             </td>
-            <td>{!! $funds->id !!}</td>
-            <td>{!! $funds->title !!}</td>
-            <td class="different">{!! $funds->description !!}</td>
-            <td><a href="{!! $funds->picture !!}">Picture Link</a></td>
-            <td><a href="{!! $funds->link !!}">{!! $funds->link !!}</a></td>
-            <td>{!! $funds->email !!}</td>
-            <td>{!! $funds->phone !!}</td>
-            <td>{!! $funds->latitude !!}</td>
-            <td>{!! $funds->longitude !!}</td>
         </tr>
     @endforeach
     </tbody>
 </table>
-</div>

@@ -27,9 +27,4 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token', 'isAdmin',
     ];
-
-    public function isAdmin()
-    {
-       if (Auth::user()->getAuthIdentifierName() == "Max Luxi") return true;
-    }
 }

@@ -1,15 +1,3 @@
-<!-- Title Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('title', 'Title:') !!}
-    {!! Form::text('title', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Description Field -->
-<div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('description', 'Description:') !!}
-    {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
-</div>
-
 <!-- Picture Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('picture', 'Picture:') !!}
@@ -23,32 +11,22 @@
 </div>
 
 <!-- Email Field -->
-<div class = "form-group col-sm-6">
-    {!! Form::label('email', 'E-Mail:') !!}
-    {!! Form::text('email', null, ['class' => 'form-control']) !!}
+<div class="form-group col-sm-6">
+    {!! Form::label('email', 'Email:') !!}
+    {!! Form::email('email', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Phone Field -->
-<div class = "form-group col-sm-6">
+<div class="form-group col-sm-6">
     {!! Form::label('phone', 'Phone:') !!}
     {!! Form::text('phone', null, ['class' => 'form-control']) !!}
 </div>
 
-
-<!-- Latitude Field -->
-<div class = "form-group col-sm-6">
-    {!! Form::label('latitude', 'Latitude:') !!}
-    {!! Form::text('latitude', null, ['class' => 'form-control']) !!}
+<!-- Location Id Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('location_id', 'Location Id:') !!}
+    {!! Form::text('location_id', null, ['class' => 'form-control']) !!}
 </div>
-
-
-<!-- Longitude Field -->
-<div class = "form-group col-sm-6">
-    {!! Form::label('longitude', 'Longitude:') !!}
-    {!! Form::text('longitude', null, ['class' => 'form-control']) !!}
-</div>
-
-
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">

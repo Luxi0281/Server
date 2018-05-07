@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Funds
+            Fund
         </h1>
    </section>
    <div class="content">
@@ -11,7 +11,7 @@
        <div class="box box-primary">
            <div class="box-body">
                <div class="row">
-                   {!! Form::model($funds, ['route' => ['funds.update', $funds->id], 'method' => 'patch']) !!}
+                   {!! Form::model($fund, ['route' => ['funds.update', $fund->id], 'method' => 'patch']) !!}
 
                         @include('funds.fields')
 

@@ -1,66 +1,48 @@
 <!-- Id Field -->
 <div class="form-group">
     {!! Form::label('id', 'Id:') !!}
-    <p>{!! $funds->id !!}</p>
-</div>
-
-<!-- Title Field -->
-<div class="form-group">
-    {!! Form::label('title', 'Title:') !!}
-    <p>{!! $funds->title !!}</p>
-</div>
-
-<!-- Description Field -->
-<div class="form-group">
-    {!! Form::label('description', 'Description:') !!}
-    <p>{!! $funds->description !!}</p>
+    <p>{!! $fund->id !!}</p>
 </div>
 
 <!-- Picture Field -->
 <div class="form-group">
     {!! Form::label('picture', 'Picture:') !!}
-    <p>{!! $funds->picture !!}</p>
+    <p>{!! $fund->picture !!}</p>
 </div>
 
 <!-- Link Field -->
 <div class="form-group">
     {!! Form::label('link', 'Link:') !!}
-    <p>{!! $funds->link !!}</p>
+    <p>{!! $fund->link !!}</p>
 </div>
 
-<!-- E-Mail Field -->
+<!-- Email Field -->
 <div class="form-group">
-    {!! Form::label('email', 'E-Mail:') !!}
-    <p>{!! $funds->email !!}</p>
+    {!! Form::label('email', 'Email:') !!}
+    <p>{!! $fund->email !!}</p>
 </div>
 
 <!-- Phone Field -->
 <div class="form-group">
     {!! Form::label('phone', 'Phone:') !!}
-    <p>{!! $funds->phone !!}</p>
+    <p>{!! $fund->phone !!}</p>
 </div>
 
-<!-- Latitude Field -->
+<!-- Location Id Field -->
 <div class="form-group">
-    {!! Form::label('latitude', 'Latitude:') !!}
-    <p>{!! $funds->latitude !!}</p>
-</div>
-
-<!-- Longitude Field -->
-<div class="form-group">
-    {!! Form::label('longitude', 'Longitude:') !!}
-    <p>{!! $funds->longitude !!}</p>
+    {!! Form::label('location_id', 'Location Id:') !!}
+    <p>{!! $fund->location_id !!}</p>
 </div>
 
 <!-- Created At Field -->
 <div class="form-group">
     {!! Form::label('created_at', 'Created At:') !!}
-    <p>{!! $funds->created_at !!}</p>
+    <p>{!! $fund->created_at !!}</p>
 </div>
 
 <!-- Updated At Field -->
 <div class="form-group">
     {!! Form::label('updated_at', 'Updated At:') !!}
-    <p>{!! $funds->updated_at !!}</p>
+    <p>{!! $fund->updated_at !!}</p>
 </div>
 
