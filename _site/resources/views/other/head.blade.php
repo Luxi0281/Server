@@ -7,4 +7,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="{{ URL::asset('css/mystyle.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ URL::asset('css/animate.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ URL::asset('js/country-dropdown/css/msdropdown/dd.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ URL::asset('js/country-dropdown/css/msdropdown/flags.css') }}" rel="stylesheet" type="text/css"/>
 </head>

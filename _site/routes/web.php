@@ -11,9 +11,6 @@
 |
 */
 
-use App\Models\Fund;
-use Laracasts\Flash\Flash;
-
 Route::get('/', function () {
     //$funds = Fund::all();
     //return view('welcome', compact('funds'));

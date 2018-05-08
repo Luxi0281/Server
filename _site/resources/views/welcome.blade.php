@@ -32,4 +32,12 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="{{ URL::asset('js/faceScripts.js') }}" type="text/javascript"></script>
 <script src="{{ URL::asset('wowJS/dist/wow.js') }}" type="text/javascript"></script>
+<script src="{{ URL::asset('js/country-dropdown/js/jquery/jquery-1.8.2.min.js') }}" type="text/javascript"></script>
+<script src="{{ URL::asset('js/country-dropdown/js/msdropdown/jquery.dd.min.js') }}" type="text/javascript"></script>
+<script>
+    $(document).ready(function() {
+        $("#countries").msDropdown();
+    })
+</script>
+
 </html>
