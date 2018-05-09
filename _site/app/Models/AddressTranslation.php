@@ -46,5 +46,11 @@ class AddressTranslation extends Model
         'full_address' => 'required'
     ];
 
+    public function language(){
+        return $this->belongsTo(Language::class);
+    }
 
+    public function address(){
+        return $this->belongsTo(Address::class);
+    }
 }
