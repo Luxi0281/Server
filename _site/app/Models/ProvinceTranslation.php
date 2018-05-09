@@ -45,5 +45,11 @@ class ProvinceTranslation extends Model
         'province_name' => 'required'
     ];
 
-    
+    public function language(){
+        return $this->belongsTo(Language::class);
+    }
+
+    public function province(){
+        return $this->belongsTo(Province::class);
+    }
 }

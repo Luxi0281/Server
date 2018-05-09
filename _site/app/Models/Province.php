@@ -41,5 +41,15 @@ class Province extends Model
         'country_id' => 'required'
     ];
 
-    
+    public function provinceTranslations(){
+        return $this->hasMany(ProvinceTranslation::class);
+    }
+
+    public function cities(){
+        return $this->hasMany(City::class);
+    }
+
+    public function country(){
+        return $this->belongsTo(Country::class);
+    }
 }

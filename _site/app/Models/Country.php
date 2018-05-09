@@ -37,5 +37,11 @@ class Country extends Model
         'country_code' => 'required'
     ];
 
-    
+    public function countryTranslations(){
+        return $this->hasMany(CountryTranslation::class);
+    }
+
+    public function provinces(){
+        return $this->hasMany(Province::class);
+    }
 }

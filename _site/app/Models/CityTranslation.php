@@ -45,5 +45,11 @@ class CityTranslation extends Model
         'city_name' => 'required'
     ];
 
-    
+    public function language(){
+        return $this->belongsTo(Language::class);
+    }
+
+    public function city(){
+        return $this->belongsTo(City::class);
+    }
 }

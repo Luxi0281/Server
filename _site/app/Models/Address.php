@@ -41,5 +41,15 @@ class Address extends Model
         'city_id' => 'required'
     ];
 
-    
+    public function city(){
+        return $this->belongsTo(City::class);
+    }
+
+    public function location(){
+        return $this->belongsTo(Location::class);
+    }
+
+    public function addressTranslation(){
+        return $this->hasMany(AddressTranslation::class);
+    }
 }

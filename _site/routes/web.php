@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Resources\FullFund;
+use App\Models\FundTranslation;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,8 +15,6 @@
 */
 
 Route::get('/', function () {
-    //$funds = Fund::all();
-    //return view('welcome', compact('funds'));
     return view('welcome');
 });
 /*
@@ -77,7 +78,31 @@ Route::get('api/getAllFunds', function (){
         })
         ->get();
 
-    return $funds->toJson();
+    $array = [];
+    foreach($funds as $data){
+        $array[] = [
+            'id' => $data->id,
+            'language_code' => $data->language_code,
+            'language_name' => $data->language_name,
+            'title' => $data->title,
+            'description' => $data->description,
+            'picture' => $data->picture,
+            'link' => $data->link,
+            'email' => $data->email,
+            'phone' => $data->phone,
+            'latitude' => $data->latitude,
+            'longitude' => $data->longitude,
+            'zip_code' => $data->zip_code,
+            'full_address' => $data->full_address,
+            'city_name' => $data->city_name,
+            'province_code' => $data->province_code,
+            'province_name' => $data->province_name,
+            'country_name' => $data->province_name,
+            'country_code' => $data->country_code
+        ];
+    }
+    return response()->json($array);
+
 });
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');

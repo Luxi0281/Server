@@ -53,5 +53,11 @@ class Fund extends Model
         'location_id' => 'required'
     ];
 
-    
+    public function location(){
+        return $this->hasOne(Location::class);
+    }
+
+    public function fundTranslations(){
+        return $this->hasMany(FundTranslation::class);
+    }
 }

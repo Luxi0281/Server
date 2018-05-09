@@ -45,5 +45,11 @@ class CountryTranslation extends Model
         'country_name' => 'required'
     ];
 
-    
+    public function language(){
+        return $this->belongsTo(Language::class);
+    }
+
+    public function country(){
+        return $this->belongsTo(Country::class);
+    }
 }

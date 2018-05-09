@@ -42,5 +42,23 @@ class Language extends Model
         'language_name' => 'required'
     ];
 
-    
+    public function fundTranslation(){
+        return $this->hasOne(FundTranslation::class);
+    }
+
+    public function countyTranslation(){
+        return $this->hasOne(CountryTranslation::class);
+    }
+
+    public function provinceTranslation(){
+        return $this->hasOne(ProvinceTranslation::class);
+    }
+
+    public function cityTranslation(){
+        return $this->hasOne(CityTranslation::class);
+    }
+
+    public function addressTranslation(){
+        return $this->hasOne(AddressTranslation::class);
+    }
 }

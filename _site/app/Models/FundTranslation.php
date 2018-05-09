@@ -50,5 +50,11 @@ class FundTranslation extends Model
         'description' => 'required'
     ];
 
-    
+    public function language(){
+        return $this->belongsTo(Language::class);
+    }
+
+    public function fund(){
+        return $this->belongsTo(Fund::class);
+    }
 }

@@ -42,5 +42,11 @@ class Location extends Model
         'address_id' => 'required'
     ];
 
-    
+    public function fund(){
+        return $this->belongsTo(Fund::class);
+    }
+
+    public function address(){
+        return $this->hasOne(Address::class);
+    }
 }
