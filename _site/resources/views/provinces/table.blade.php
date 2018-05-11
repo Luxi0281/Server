@@ -9,6 +9,7 @@
     <tbody>
     @foreach($provinces as $province)
         <tr>
+            <td>{!! $province->id !!}</td>
             <td>{!! $province->province_code !!}</td>
             <td>{!! $province->country_id !!}</td>
             <td>

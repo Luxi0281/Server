@@ -1,6 +1,7 @@
 <table class="table table-responsive" id="countries-table">
     <thead>
         <tr>
+            <th>ID</th>
             <th>Country Code</th>
             <th colspan="3">Action</th>
         </tr>
@@ -8,6 +9,7 @@
     <tbody>
     @foreach($countries as $country)
         <tr>
+            <td>{!! $country->id !!}</td>
             <td>{!! $country->country_code !!}</td>
             <td>
                 {!! Form::open(['route' => ['countries.destroy', $country->id], 'method' => 'delete']) !!}

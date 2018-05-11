@@ -1,6 +1,7 @@
 <table class="table table-responsive" id="addressTranslations-table">
     <thead>
         <tr>
+            <th>ID</th>
             <th>Address Id</th>
         <th>Language Id</th>
         <th>Full Address</th>
@@ -10,6 +11,7 @@
     <tbody>
     @foreach($addressTranslations as $addressTranslation)
         <tr>
+            <td>{!! $addressTranslation->id !!}</td>
             <td>{!! $addressTranslation->address_id !!}</td>
             <td>{!! $addressTranslation->language_id !!}</td>
             <td>{!! $addressTranslation->full_address !!}</td>

@@ -1,6 +1,7 @@
 <table class="table table-responsive" id="fundTranslations-table">
     <thead>
         <tr>
+            <th>ID</th>
             <th>Fund Id</th>
         <th>Language Id</th>
         <th>Title</th>
@@ -11,6 +12,7 @@
     <tbody>
     @foreach($fundTranslations as $fundTranslation)
         <tr>
+            <td>{!! $fundTranslation->id !!}</td>
             <td>{!! $fundTranslation->fund_id !!}</td>
             <td>{!! $fundTranslation->language_id !!}</td>
             <td>{!! $fundTranslation->title !!}</td>

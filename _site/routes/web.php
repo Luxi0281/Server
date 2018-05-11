@@ -97,7 +97,7 @@ Route::get('api/getAllFunds', function (){
             'city_name' => $data->city_name,
             'province_code' => $data->province_code,
             'province_name' => $data->province_name,
-            'country_name' => $data->province_name,
+            'country_name' => $data->country_name,
             'country_code' => $data->country_code
         ];
     }

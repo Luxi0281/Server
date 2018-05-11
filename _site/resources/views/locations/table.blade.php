@@ -1,6 +1,7 @@
 <table class="table table-responsive" id="locations-table">
     <thead>
         <tr>
+            <th>ID</th>
             <th>Latitude</th>
         <th>Longitude</th>
         <th>Address Id</th>
@@ -10,6 +11,7 @@
     <tbody>
     @foreach($locations as $location)
         <tr>
+            <td>{!! $location->id !!}</td>
             <td>{!! $location->latitude !!}</td>
             <td>{!! $location->longitude !!}</td>
             <td>{!! $location->address_id !!}</td>

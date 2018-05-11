@@ -1,6 +1,7 @@
 <table class="table table-responsive" id="addresses-table">
     <thead>
         <tr>
+            <th>ID</th>
             <th>Zip Code</th>
         <th>City Id</th>
             <th colspan="3">Action</th>
@@ -9,6 +10,7 @@
     <tbody>
     @foreach($addresses as $address)
         <tr>
+            <td>{!! $address->id !!}</td>
             <td>{!! $address->zip_code !!}</td>
             <td>{!! $address->city_id !!}</td>
             <td>

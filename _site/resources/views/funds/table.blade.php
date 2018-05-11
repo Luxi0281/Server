@@ -1,6 +1,7 @@
 <table class="table table-responsive" id="funds-table">
     <thead>
         <tr>
+            <th>ID</th>
             <th>Picture</th>
         <th>Link</th>
         <th>Email</th>
@@ -12,7 +13,8 @@
     <tbody>
     @foreach($funds as $fund)
         <tr>
-            <td>{!! $fund->picture !!}</td>
+            <td>{!! $fund->id !!}</td>
+            <td><a href="{!! $fund->picture !!}">Picture Link</a></td>
             <td>{!! $fund->link !!}</td>
             <td>{!! $fund->email !!}</td>
             <td>{!! $fund->phone !!}</td>
