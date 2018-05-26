@@ -1,6 +1,3 @@
-body {
-}
-
 nav {
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
     position: fixed!important;
@@ -27,7 +24,6 @@ nav.scrollUp {
 .pad_con
 {
     padding-top: 90px;
-    padding-bottom: 90px;
 }
 
 .mar_con
@@ -39,6 +35,5 @@ footer {
     left: 0;
     bottom: 0;
     width: 100%;
-    margin-top: 150px;
     height: 60px;
 }

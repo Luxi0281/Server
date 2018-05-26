@@ -29,31 +29,19 @@ class LoginController extends Controller
         return redirect('/');
     }
 
-    public function addAdmin()
+    public function addAdmins()
     {
-            return User::create([
-                'name' => 'Max Luxi',
-                'email' => 'myemail@gmail.com',
+		$names = array("Max Luxi", "Nashron");
+		
+		for ($i = 0; $i < 2; $i++)
+		{
+			User::create([
+                'name' => $names[$i],
+                'email' => 'admin'.$i.'@gmail.com',
                 'password' => bcrypt('admin', ['password']),
-                'isAdmin' => true,
                 'remember_token' => str_random(10)
             ]);
-    }
-
-    public function addFakes()
-    {
-        $faker = Factory::create();
-
-        for ($i = 0; $i <= 10; ++$i)
-        {
-            User::create([
-                'name' => $faker->name,
-                'email' => $faker->email,
-                'password' => bcrypt('user', ['password']),
-                'remember_token' => str_random(10)
-            ]);
-        }
-        return $faker;
+		}   
     }
 
     use AuthenticatesUsers;
@@ -76,15 +64,8 @@ class LoginController extends Controller
         if ($usersQuantity == 0)
         {
             DB::table('users') -> truncate();
-            $this->addAdmin();
-            $this->addFakes();
+            $this->addAdmins();
         }
-
-        if (DB::table('users')->where('isAdmin', true)->doesntExist())
-        {
-            $this->addAdmin();
-        }
-
         $this->middleware('guest')->except('logout');
     }
 }

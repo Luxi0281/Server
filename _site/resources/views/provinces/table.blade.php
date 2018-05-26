@@ -1,6 +1,7 @@
 <table class="table table-responsive" id="provinces-table">
     <thead>
         <tr>
+			<th>ID</th>
             <th>Province Code</th>
         <th>Country Id</th>
             <th colspan="3">Action</th>

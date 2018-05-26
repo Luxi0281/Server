@@ -13,11 +13,11 @@ return [
     |
     */
 
-	'header' => 'Administrative Section',
-    'failed' => 'These credentials do not match our records.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-	'form_header' => 'Sign in to start your session',
-	'rememberMe' => 'Remember Me',
-	'signIn' => 'Sign In',
+	'header' => 'Администртивный раздел',
+    'failed' => 'Введенная вами информация не найдена в нашей базе',
+    'throttle' => 'Слишком много попыток входа. Попробуйте ещё раз через :seconds seconds.',
+	'form_header' => 'Войдите, чтобы начать вашу сессию',
+	'rememberMe' => 'Запомнить меня',
+	'signIn' => 'Войти'
 
 ];

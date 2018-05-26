@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Log in the administrative section</title>
+    <title>@lang('auth.header')</title>
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -37,10 +37,12 @@
 
 <div class="login-box">
 
-    <h1 class = "text-center">Administrative <br>Section</h1>
+    <h1 class = "text-center">@lang('auth.header')</h1>
+	<br>
+	<br>
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+        <p class="login-box-msg">@lang('auth.form_header')</p>
 
         <form method="post" action="{{ url('/login') }}">
             {!! csrf_field() !!}
@@ -69,13 +71,13 @@
                 <div class="col-xs-8">
                     <div class="checkbox icheck">
                         <label>
-                            <input type="checkbox" name="remember"> Remember Me
+                            <input type="checkbox" name="remember"> @lang('auth.rememberMe')
                         </label>
                     </div>
                 </div>
                 <!-- /.col -->
                 <div class="col-xs-4">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">@lang('auth.signIn')</button>
                 </div>
                 <!-- /.col -->
             </div>

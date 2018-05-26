@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Resources\FullFund;
 use App\Models\FundTranslation;
+use App\Models\Fund;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,24 +15,24 @@ use App\Models\FundTranslation;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	
+	$fundsList = DB::table('languages')
+	->join('fund_translations','fund_translations.language_id', '=', 'languages.id')
+    ->join('funds', 'funds.id', '=', 'fund_translations.fund_id')
+	->where('language_code', '=', App::getLocale())
+    ->get();
+	
+    return view('welcome', compact('fundsList'));
 });
-/*
+
+Route::post('/language', array (
+	'Middleware' => 'LanguageSwitcher',
+	'uses' => 'LocaleController@index'
+));
+
 Route::get('fund/{fund}', function ($id){
-
-    $fund = Fund::findOrFail($id);
-    $previous = Fund::where('id', '<', $fund->id)->max('id');
-    $next = Fund::where('id', '>', $fund->id)->min('id');
-
-    if (empty($fund)){ abort(404);}
-
-    return view ('showFund', compact('fund'))->with('previous', $previous)->with('next', $next);
-});
-*/
-
-Route::get('api/getAllFunds', function (){
-
-    $funds = DB::table('languages')
+	
+	$fund = DB::table('languages')
         ->select(
             'funds.id',
             'languages.language_code',
@@ -76,38 +76,17 @@ Route::get('api/getAllFunds', function (){
             $join->on('country_translations.country_id', '=', 'countries.id');
             $join->on('languages.id', '=', 'country_translations.language_id');
         })
-        ->get();
+		//->where('language_code', '=', App::getLocale())
+		->where([
+		['language_code', '=', App::getLocale()],
+		['funds.id', '=', $id]
+        ])->get();
 
-    $array = [];
-    foreach($funds as $data){
-        $array[] = [
-            'id' => $data->id,
-            'language_code' => $data->language_code,
-            'language_name' => $data->language_name,
-            'title' => $data->title,
-            'description' => $data->description,
-            'picture' => $data->picture,
-            'link' => $data->link,
-            'email' => $data->email,
-            'phone' => $data->phone,
-            'latitude' => $data->latitude,
-            'longitude' => $data->longitude,
-            'zip_code' => $data->zip_code,
-            'full_address' => $data->full_address,
-            'city_name' => $data->city_name,
-            'province_code' => $data->province_code,
-            'province_name' => $data->province_name,
-            'country_name' => $data->country_name,
-            'country_code' => $data->country_code
-        ];
-    }
-    return response()->json($array);
-
+	return view ('showFund', compact('fund'));
 });
 
+
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
-
-
 Auth::routes();
 Route::get('admin/home', 'HomeController@index');
 Route::resource('admin/funds', 'FundsController');

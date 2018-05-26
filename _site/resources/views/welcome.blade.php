@@ -3,30 +3,46 @@
 @include('other.head')
 <body>
 @include('other.navigation')
-<div class="container text-center pad_con">
+</div>
+<div class="container text-center" style = "padding-top: 90px;">
+    <img class = "center-block" src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsK2HjJxn45b6nB1qe__xmZHoh0_8TU-S08q7XMBgq5d95noVvFg" height="256" width="256">
+    <h1 class = "text-center">@lang('welcome.welcomeTo')<u>@lang('welcome.luxNash')</u>  <br>
+        <small>@lang('welcome.nice2meet')</small>
+    </h1>
+    <img class = "center-block" src = "https://d30y9cdsu7xlg0.cloudfront.net/png/20191-200.png" height="96" width="96">
+    <h2><u>@lang('welcome.whatAreCharities')</u></h2> <br>
+    <p>@lang('welcome.p1')</p>
+    <p>@lang('welcome.p2')</p>
+    <p>@lang('welcome.p3')</p>
+    <p>@lang('welcome.p4')</p>
     <br>
     <br>
-    <br>
-    <img class = "wow animated infinite pulse center-block" src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsK2HjJxn45b6nB1qe__xmZHoh0_8TU-S08q7XMBgq5d95noVvFg" height="256" width="256">
-    <h1 class = "wow animated bounceInUp text-center">Welcome to <u>Luxi & Nash</u> Charity Foundation <br>
-        <small>It's Nice to Meet You!</small>
-        </h1>
-    <img data-wow-delay="0.5s" class = "wow animated bounceInRight center-block" src = "https://d30y9cdsu7xlg0.cloudfront.net/png/20191-200.png" height="96" width="96">
-    <h2 data-wow-delay="1s" class = "wow animated bounceInLeft"><u>What are charity organizations?</u></h2> <br>
-    <p data-wow-delay="1.0s" class = "wow animated bounceInRight">A <b>charitable organization</b> or <b>charity</b> is a non-profit organization (NPO) whose primary objectives are philanthropy and social well-being (e.g. charitable, educational, religious, or other activities serving the public interest or common good).</p>
-    <p data-wow-delay="1.0s" class = "wow animated bounceInLeft">  The legal definition of a charitable organisation (and of charity) varies between countries and in some instances regions of the country. The regulation, the tax treatment, and the way in which charity law affects charitable organizations also vary.</p>
-    <p data-wow-delay="1.0s" class = "wow animated bounceInRight">   Financial figures (e.g. tax refund, revenue from fundraising, revenue from sale of goods and services or revenue from investment) are important indicators to assess the financial sustainability of a charity, especially to charity evaluators. This information can impact a charity's reputation with donors and societies, and thus the charity's financial gains. </p>
-    <p data-wow-delay="1.0s" class = "wow animated bounceInLeft">  Charitable organisations often depend partly on donations from businesses. Such donations to charitable organisations represent a major form of corporate philanthropy.</p>
-    <br>
-    <br>
-    <img data-wow-delay="1.6s" class = "wow animated bounceIn center-block" src = "https://www.charitableevolution.com/wp-content/uploads/2017/04/Logo_LighBlue_Medium-Rotation.gif">
-    <h2 class="wow animated bounceInRight my-4 text-center">We suggest you the following Russian Charity Organizations: </h2>
+    <img class = "center-block" src = "https://www.charitableevolution.com/wp-content/uploads/2017/04/Logo_LighBlue_Medium-Rotation.gif"><br> <br>
+    <h2 class = "text-center">@lang('welcome.suggesting')</h2>
+	<br>
+	<div class = "container text-center" style="padding-top: 10px; padding-bottom: 10px;">
+	<br><br>
     <div class="row">
+        @foreach($fundsList as $fund)
+        <div data-wow-delay="0.5s" class="wow animated bounceInUp col-lg-4 col-sm-6 col-md-6 col-sm-12 col-xs-12 text-center mb-4" id="fundDiv">
+            <div class="border" style = "margin: 5px; padding: 5px;">
+            <img class="rounded-circle img-fluid d-block mx-auto" src="{{$fund->picture}}" alt="" width="150" height="150" style="border: 2px solid grey; margin-bottom: 15px; margin-top: 15px">
+            <h3>
+			{{$fund->title}}
+			</h3>
+            <p style="max-height: 145px; overflow: hidden; position: relative; margin: 0px;" class = "text-center">
+			{{$fund->description}}
+			</p>
+			<p style = "padding: 0px; margin: 0px">...</p>
+			<a class="btn btn-primary" href="/fund/{!! $fund->id !!}" style="margin: 15px" style=""> {!! trans('welcome.click2Description') !!}</a>
+            </div>
+        </div>
+        @endforeach
     </div>
 </div>
-
-@include('other.modal')
+</div>
 @include('other.footer')
+@include('other.modal')
 </body>
 <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -36,7 +52,7 @@
 <script src="{{ URL::asset('js/country-dropdown/js/msdropdown/jquery.dd.min.js') }}" type="text/javascript"></script>
 <script>
     $(document).ready(function() {
-        $("#countries").msDropdown();
+        $("#locale").msDropdown();
     })
 </script>
 
