@@ -1,59 +1,42 @@
-<!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<!doctype html>
+<html lang="{{ strtolower(app()->getLocale()) }}">
 @include('other.head')
 <body>
 @include('other.navigation')
-</div>
-<div class="container text-center" style = "padding-top: 90px;">
-    <img class = "center-block" src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsK2HjJxn45b6nB1qe__xmZHoh0_8TU-S08q7XMBgq5d95noVvFg" height="256" width="256">
-    <h1 class = "text-center">@lang('welcome.welcomeTo')<u>@lang('welcome.luxNash')</u>  <br>
-        <small>@lang('welcome.nice2meet')</small>
+<div class="container text-center navOffset">
+    <img class = "animated pulse infinite center-block" src = "https://i.imgur.com/eCDsoeh.png" height="256" width="256">
+    <h1 class = "text-center">{!! trans('welcome.welcomeTo') !!}<u>@lang('welcome.luxNash')</u>
+        <br><small>@lang('welcome.nice2meet')</small>
     </h1>
     <img class = "center-block" src = "https://d30y9cdsu7xlg0.cloudfront.net/png/20191-200.png" height="96" width="96">
-    <h2><u>@lang('welcome.whatAreCharities')</u></h2> <br>
+    <h2 class = "mb-3"><u>@lang('welcome.whatAreCharities')</u></h2>
     <p>@lang('welcome.p1')</p>
     <p>@lang('welcome.p2')</p>
     <p>@lang('welcome.p3')</p>
-    <p>@lang('welcome.p4')</p>
-    <br>
-    <br>
-    <img class = "center-block" src = "https://www.charitableevolution.com/wp-content/uploads/2017/04/Logo_LighBlue_Medium-Rotation.gif"><br> <br>
-    <h2 class = "text-center">@lang('welcome.suggesting')</h2>
-	<br>
-	<div class = "container text-center" style="padding-top: 10px; padding-bottom: 10px;">
-	<br><br>
+    <p class = "mb-3">@lang('welcome.p4')</p>
+    <img class = "center-block mb-3" src = "https://i.imgur.com/K6XWLJQ.png" width="192" height="192">
+    <h2 class = "text-center mb-5">@lang('welcome.suggesting')</h2>
+	<div class = "text-center pt-2 pb-2">
     <div class="row">
         @foreach($fundsList as $fund)
-        <div data-wow-delay="0.5s" class="wow animated bounceInUp col-lg-4 col-sm-6 col-md-6 col-sm-12 col-xs-12 text-center mb-4" id="fundDiv">
-            <div class="border" style = "margin: 5px; padding: 5px;">
-            <img class="rounded-circle img-fluid d-block mx-auto" src="{{$fund->picture}}" alt="" width="150" height="150" style="border: 2px solid grey; margin-bottom: 15px; margin-top: 15px">
-            <h3>
-			{{$fund->title}}
-			</h3>
-            <p style="max-height: 145px; overflow: hidden; position: relative; margin: 0px;" class = "text-center">
-			{{$fund->description}}
-			</p>
-			<p style = "padding: 0px; margin: 0px">...</p>
-			<a class="btn btn-primary" href="/fund/{!! $fund->id !!}" style="margin: 15px" style=""> {!! trans('welcome.click2Description') !!}</a>
-            </div>
-        </div>
+		<div class="text-center wow animated bounceInUp col-lg-4 col-sm-6 col-md-6 col-sm-6 col-xs-12 text-center mb-5" style = "height: 550px;">
+		<div class = "card highlight" style = "height: 550px;">
+			<img class="fundBorder rotate rounded-circle img-fluid d-block mx-auto mb-3 mt-3" src="{{$fund->picture}}" alt="{{$fund->title}}" style="height: 200px!important; width: 200px!important;">
+			<div class="card-body">
+				<h5 class="card-title">{{$fund->title}}</h5>
+				<p style="max-height: 145px; overflow: hidden; margin:0px;" class = "text-center card-text">{{$fund->description}}</p>
+				<i class="fas fa-ellipsis-h mt-2" id = "ellipsis"></i>
+			</div>
+			<div class = "text-center mb-5">
+				<a href="/foundation/{!! $fund->id !!}" class = "card-footer text-white success-color"><i class="fas fa-book-open pr-2"></i>{!! trans('welcome.click2Description') !!}<i class="fas fa-book-open pl-2"></i>	</a>
+			</div>
+		</div>
+		</div>
         @endforeach
     </div>
 </div>
 </div>
 @include('other.footer')
 @include('other.modal')
-</body>
-<script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="{{ URL::asset('js/faceScripts.js') }}" type="text/javascript"></script>
-<script src="{{ URL::asset('wowJS/dist/wow.js') }}" type="text/javascript"></script>
-<script src="{{ URL::asset('js/country-dropdown/js/jquery/jquery-1.8.2.min.js') }}" type="text/javascript"></script>
-<script src="{{ URL::asset('js/country-dropdown/js/msdropdown/jquery.dd.min.js') }}" type="text/javascript"></script>
-<script>
-    $(document).ready(function() {
-        $("#locale").msDropdown();
-    })
-</script>
-
+@include('other.scripts')
 </html>

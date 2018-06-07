@@ -1,113 +1,48 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>@lang('auth.header')</title>
+<html lang="{{ strtolower(app()->getLocale()) }}">
+@include('auth_includes.head')
+<body>
+<!-- Material form login -->
 
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<form class="form-signin" method="post" action="{{ url('/login') }}" style = "margin-bottom: 200px;" autocomplete="off">
+	{!! csrf_field() !!}
+      <div class="text-center mb-5">
+        <img class="mb-4 wow animated rollIn" src="https://i.imgur.com/rnicYbw.png" alt="" width="128" height="128">
+        <h1 class="h3 mb-3 font-weight-normal">{!! trans('auth.header') !!}</h1>
+		<h5>@lang('auth.form_header')</h5>
+      </div>
 
-    <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-
-    <!-- Theme style -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.2/css/AdminLTE.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.2/css/skins/_all-skins.min.css">
-
-    <!-- iCheck -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/skins/square/_all.css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
-<body class="hold-transition login-page">
-<!-- Modal -->
-
-<div class="login-box">
-
-    <h1 class = "text-center">@lang('auth.header')</h1>
-	<br>
-	<br>
-    <!-- /.login-logo -->
-    <div class="login-box-body">
-        <p class="login-box-msg">@lang('auth.form_header')</p>
-
-        <form method="post" action="{{ url('/login') }}">
-            {!! csrf_field() !!}
-
-            <div class="form-group has-feedback {{ $errors->has('email') ? ' has-error' : '' }}">
-                <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email">
-                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                @if ($errors->has('email'))
-                    <span class="help-block">
-                    <strong>{{ $errors->first('email') }}</strong>
-                </span>
-                @endif
-            </div>
-
-            <div class="form-group has-feedback{{ $errors->has('password') ? ' has-error' : '' }}">
-                <input type="password" class="form-control" placeholder="Password" name="password">
-                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                @if ($errors->has('password'))
-                    <span class="help-block">
-                    <strong>{{ $errors->first('password') }}</strong>
-                </span>
-                @endif
-
-            </div>
-            <div class="row">
-                <div class="col-xs-8">
-                    <div class="checkbox icheck">
-                        <label>
-                            <input type="checkbox" name="remember"> @lang('auth.rememberMe')
-                        </label>
-                    </div>
-                </div>
-                <!-- /.col -->
-                <div class="col-xs-4">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">@lang('auth.signIn')</button>
-                </div>
-                <!-- /.col -->
-            </div>
-        </form>
-
-        <!--a href="{{ url('/password/reset') }}">I forgot my password</a><br>
-        <!-- a href="{{ url('/register') }}" class="text-center">Register a new account</a> -->
-
+    <!-- Material input email -->
+    <div class="md-form has-feedback{{ $errors->has('email') ? ' error' : '' }}">
+        <i class="fa fa-envelope prefix has-feedback{{ $errors->has('email') ? ' error' : '' }}"></i>
+        <input type="email" id="materialFormLoginEmailEx" class="form-control" name="email" autocomplete="off" value="{{ old('email') }}">
+        <label for="materialFormLoginEmailEx">@lang('auth.email')</label>
+		@if ($errors->has('email'))
+         <span class="help-block">
+             <i class="slowRotate fas fa-times-circle mr-2" style = "color: #ff3547"></i><strong class = "text-danger">{{ $errors->first('email') }}</strong>
+         </span>
+        @endif
     </div>
-    <!-- /.login-box-body -->
-</div>
-<!-- /.login-box -->
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<!-- AdminLTE App -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.2/js/adminlte.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js"></script>
-<script>
-    $(function () {
-        $('input').iCheck({
-            checkboxClass: 'icheckbox_square-blue',
-            radioClass: 'iradio_square-blue',
-            increaseArea: '20%' // optional
-        });
-    });
-</script>
-
-
+    <!-- Material input password -->
+    <div class="md-form has-feedback{{ $errors->has('password') ? ' error' : '' }}">
+        <i class="fa fa-lock prefix has-feedback{{ $errors->has('password') ? ' error' : '' }}"></i>
+        <input type="password" id="materialFormLoginPasswordEx" class="form-control" name="password" autocomplete="off">
+        <label for="materialFormLoginPasswordEx">@lang('auth.password')</label>
+		@if ($errors->has('password'))
+           <span class="help-block">
+             <i class="slowRotate fas fa-times-circle mr-2" style = "color: #ff3547;"></i><strong class = "text-danger">{{ $errors->first('password') }}</strong>
+           </span>
+        @endif
+    </div>
+    <div class="form-check my-4 ml-3">
+           <input class="form-check-input" type="checkbox" id="defaultCheck12" style = "display: none;">
+           <label for="defaultCheck12" class="ml-3">@lang('auth.rememberMe')</label>
+     </div>
+    <div class="text-center mt-4">
+        <button type="submit" class="mt-2 mb-3 btn btn-lg btn-success btn-block center-block"><i class="fas fa-sign-in-alt mr-1"></i>@lang('auth.signIn')</button>
+    </div>
+</form>
+<!-- Material form login -->
 </body>
+@include('auth_includes.scripts')
 </html>

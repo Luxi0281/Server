@@ -16,18 +16,17 @@ $(document).ready(function () {
         }
         c = currentScrollTop;
     });
+	new WOW().init();
+	wow = new WOW({
+		boxClass:     'wow',
+		animateClass: 'animated',
+        offset:       0,
+        mobile:       false,
+        live:         false
+        })
+     wow.init();
+});
 
-    //new WOW().init();
-	
-	                      wow = new WOW(
-                      {
-                      boxClass:     'wow',      // default
-                      animateClass: 'animated', // default
-                      offset:       0,          // default
-                      mobile:       false,       // default
-                      live:         false        // default
-                    }
-                    )
-                    wow.init();
-
+$(window).on('beforeunload', function(){
+	$(window).scrollTop(0);
 });

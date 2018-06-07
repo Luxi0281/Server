@@ -59,7 +59,8 @@ class CountryController extends AppBaseController
 
         $country = $this->countryRepository->create($input);
 
-        Flash::success('Country saved successfully.');
+        //Flash::success('Country with ID = '.$country->id.' and having the code - '.$country->country_code.' has been successfully saved');
+		Flash::success('Country saved successfully.');
 
         return redirect(route('countries.index'));
     }

@@ -1,3 +1,4 @@
+<div style="overflow: scroll;">
 <table class="table table-responsive" id="addressTranslations-table">
     <thead>
         <tr>
@@ -28,3 +29,4 @@
     @endforeach
     </tbody>
 </table>
+</div>

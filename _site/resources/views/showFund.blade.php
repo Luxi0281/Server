@@ -3,71 +3,69 @@
 @include('other.head')
 <body>
 @include ('other.navigation')
-
-<div class="container" style="padding-top: 100px;">
-
-    <div class="text-center" style="padding: 15px 80px 30px 80px;">
-	@foreach ($fund as $fund)
-        <img class="rounded-circle img-fluid d-block mx-auto" src="{!! $fund->picture !!}" alt="" width="250" height="250" style="border: 3px solid grey; margin-bottom: 15px; margin-top: 15px">
-        <br>
+    <div class="container pt-5">
+	    @foreach ($fund as $fund)
+      <div class="py-5 text-center">
+        <img class="wow animated rollIn rounded-circle img-fluid d-block mx-auto mb-3 mt-3" id = "fundPic" src="{!! $fund->picture !!}" alt="{!! $fund->title !!}" >
         <h1>@lang('fund.fund')"{!! $fund->title !!}"</h1>
-        <br>
-        <h1>@lang('fund.link') </h1>
-        <h3> <a href="{!! $fund->link !!}">{!! $fund->link !!}</a></h3>
-        <br>
-        <h1>@lang('fund.description')</h1>
-        <br>
-        <p class = "text-center">{!! $fund->description !!}</p>
-        <br>
-        <h1>@lang('fund.email')</h1>
-        <p class = "text-center">{!! $fund->email !!}</p>
-        <br>
-        <h1>@lang('fund.phone')</h1>
-        <p class = "text-center">{!! $fund->phone !!}</p>
-        <br>
-		<h1>@lang('fund.takesPlace') </h1>
-        <p class = "text-center" style="font-size: 18px;">{!! $fund->country_name !!}, {!! $fund->province_name !!}, {!! $fund->city_name !!}</p>
-        <br>
-		<h1>@lang('fund.address')</h1>
-        <p class = "text-center" style="font-size: 18px;"><u>{!! $fund->full_address !!}</u></p>
-        <br>
-        <h1>@lang('fund.mapLocation') </h1>
-        <br>
-        <div id="map-container" class="z-depth-1" style="height: 500px; border-radius: 25px; border: 1px solid black"></div>
-		@endforeach
+		<br>
+		<img class = "img-fluid d-block mx-auto" src = "https://cdn4.iconfinder.com/data/icons/small-n-flat/24/notepad-512.png" width="48" height="48">
+		<h4>@lang('fund.about')</h4>
+        <p class="lead">{!! $fund->description !!}</p>
+		<img class = "fastRotate img-fluid d-block mx-auto rotate" src = "http://www.iconhot.com/icon/png/vista-icons-png/256/vista-16.png" width="48" height="48">
+		<h4>@lang('fund.link')</h4>
+		<a href="{!! $fund->link !!}">{!! $fund->link !!}</a>
+      </div>
+      <div class="row">
+        <div class="col-md-8 order-md-1">
+		<img class = "img-fluid d-block mx-auto" src = "http://www.clker.com/cliparts/B/r/u/H/w/O/information-icon-hi.png" width="48" height="48" style="padding: 5px;">
+          <h4 class="justify-content-between align-items-center mb-3 text-center">@lang('fund.info')</h4>
+			<table class="table table-hover table-bordered">
+			<tbody class = "text-center">
+				<tr>
+				<th scope="row"><i class="fa fa-globe mr-2"></i>@lang('fund.country')</th>
+				<td>{!! $fund->country_name !!} <span class="flag-icon flag-icon-{!! strtolower($fund->country_code) !!}"></span></td>
+				</tr>
+				<tr>
+				<th scope="row"><i class="fa fa-map-signs mr-1"></i>@lang('fund.provinceState')</th>
+				<td>{!! $fund->province_name !!}</td>
+				</tr>
+				<tr>
+				<th scope="row"><i class="fa fa-industry mr-1"></i>@lang('fund.city')</th>
+				<td>{!! $fund->city_name !!}</td>
+				</tr>
+				<tr>
+				<th scope="row"><i class="fa fa-envelope mr-1"></i>@lang('fund.email')</th>
+				<td>{!! $fund->email !!}</td>
+				</tr>
+				<tr>
+				<th scope="row"><i class="fa fa-phone-square mr-1"></i>@lang('fund.phone')</th>
+				<td>{!! $fund->phone !!}</td>
+				</tr>
+				<tr>
+				<th scope="row"><i class="fa fa-location-arrow mr-1"></i>@lang('fund.legalAddress')</th>
+				<td>{!! $fund->full_address !!}</td>
+				</tr>
+			</tbody>
+				</table>
+              </div>
+		<div class="col-md-4 order-md-2 mb-4">
+			<img class = "wow animated pulse infinite img-fluid d-block mx-auto" src = "https://thumbs.dreamstime.com/b/map-location-marker-flat-icon-white-generic-folding-nameless-city-map-flat-icon-red-gps-marker-isolated-white-97460808.jpg" width="48" height="48">
+			<h4 class="justify-content-between align-items-center mb-3 text-center">
+				<span>@lang('fund.mapLocation')</span>
+            </h4>
+          <ul class="list-group mb-3">
+			<div id="map-container" class="z-depth-1"></div>
+          </ul>
+        </div>
+            </div>
+        </div>
+      </div>
+	  @endforeach
     </div>
-</div>
 @include ('other.modal')
 @include ('other.footer')
 </body>
-<script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="{{ URL::asset('js/faceScripts.js') }}" type="text/javascript"></script>
-<script src="https://maps.google.com/maps/api/js"></script>
-<script>
-    function regular_map() {
-
-        var latitude = {!! json_encode($fund->latitude) !!};
-        var longitude = {!! json_encode($fund->longitude) !!};
-
-        var var_location = new google.maps.LatLng(latitude, longitude);
-
-        var var_mapoptions = {
-            center: var_location,
-            zoom: 14
-        };
-
-        var var_map = new google.maps.Map(document.getElementById("map-container"),
-            var_mapoptions);
-
-        var var_marker = new google.maps.Marker({
-            position: var_location,
-            map: var_map,
-            title: "New York"
-        });
-    }
-    // Initialize maps
-    google.maps.event.addDomListener(window, 'load', regular_map);
-</script>
-
+@include('other.scripts')
+@include('other.map')
 </html>

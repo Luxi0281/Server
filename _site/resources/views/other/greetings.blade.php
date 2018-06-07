@@ -3,8 +3,7 @@
 @section('content')
     <div class = "well">
     <div class = "container" style= "font-size: 24px;">
-        <img src="https://www.shareicon.net/download/2016/06/26/619537_tool.ico"
-             class="img-circle center-block" width="172" height="172"/>
+        <img src="https://i.imgur.com/xqXEcHN.png" class="img-circle center-block" width="172" height="172"/>
         <h1 class = "text-center">Here you can manage all the data you need <br/><br> Including: </h1>
         <br><br>
         <div class = "row">

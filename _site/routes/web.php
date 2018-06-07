@@ -19,18 +19,25 @@ Route::get('/', function () {
 	$fundsList = DB::table('languages')
 	->join('fund_translations','fund_translations.language_id', '=', 'languages.id')
     ->join('funds', 'funds.id', '=', 'fund_translations.fund_id')
-	->where('language_code', '=', App::getLocale())
+	//->where('language_code', '=', App::getLocale())
+	->where([
+	['funds.id', '!=', 20],
+	['language_code', '=', App::getLocale()]
+	])
     ->get();
 	
-    return view('welcome', compact('fundsList'));
+   return view('welcome', compact('fundsList'));
+  // return dd($fundsList);
 });
+
+
 
 Route::post('/language', array (
 	'Middleware' => 'LanguageSwitcher',
 	'uses' => 'LocaleController@index'
-));
+))->name('switch');;
 
-Route::get('fund/{fund}', function ($id){
+Route::get('foundation/{foundation}', function ($id){
 	
 	$fund = DB::table('languages')
         ->select(
@@ -76,13 +83,13 @@ Route::get('fund/{fund}', function ($id){
             $join->on('country_translations.country_id', '=', 'countries.id');
             $join->on('languages.id', '=', 'country_translations.language_id');
         })
-		//->where('language_code', '=', App::getLocale())
 		->where([
 		['language_code', '=', App::getLocale()],
 		['funds.id', '=', $id]
         ])->get();
 
 	return view ('showFund', compact('fund'));
+	//return dd($fund);
 });
 
 
@@ -90,54 +97,15 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Auth::routes();
 Route::get('admin/home', 'HomeController@index');
 Route::resource('admin/funds', 'FundsController');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Route::resource('languages', 'LanguageController');
-
 Route::resource('countries', 'CountryController');
-
 Route::resource('countryTranslations', 'CountryTranslationController');
-
 Route::resource('provinces', 'ProvinceController');
-
 Route::resource('provinceTranslations', 'ProvinceTranslationController');
-
 Route::resource('cities', 'CityController');
-
 Route::resource('cityTranslations', 'CityTranslationController');
-
 Route::resource('addresses', 'AddressController');
-
 Route::resource('addressTranslations', 'AddressTranslationController');
-
 Route::resource('locations', 'LocationController');
-
-
-
 Route::resource('fundTranslations', 'FundTranslationController');
-
 Route::resource('funds', 'FundController');

@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateLanguageRequest;
 use App\Repositories\LanguageRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
@@ -59,7 +60,8 @@ class LanguageController extends AppBaseController
 
         $language = $this->languageRepository->create($input);
 
-        Flash::success('Language saved successfully.');
+        //Flash::success('Language saved successfully.');
+		Session::flash('message', 'Language saved successfully');
 
         return redirect(route('languages.index'));
     }

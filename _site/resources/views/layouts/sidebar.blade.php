@@ -1,4 +1,4 @@
-<aside class="main-sidebar" id="sidebar-wrapper">
+<aside class="main-sidebar control-sidebar control-sidebar-light" id="sidebar-wrapper">
 
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
@@ -6,8 +6,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="https://i.pinimg.com/originals/6b/84/23/6b8423c6c6b31415714ebb12c6c55478.png" class="img-circle"
-                     alt="User Image"/>
+                <img src="{!! Auth::user()->avatar !!}" class="img-circle" alt="User Image"/>
             </div>
             <div class="pull-left info">
                 @if (Auth::guest())
@@ -18,12 +17,8 @@
                 <a href="#"><i class="fa fa-circle text-success"></i> Logged In</a>
             </div>
         </div>
-
-        <!-- search form (Optional) -->
-        <form action="#" method="get" class="sidebar-form"></form>
         <!-- Sidebar Menu -->
-
-        <ul class="sidebar-menu">
+        <ul class="sidebar-menu" data-widget="tree">
             @include('layouts.menu')
         </ul>
         <!-- /.sidebar-menu -->

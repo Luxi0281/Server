@@ -13,7 +13,9 @@ return [
     |
     */
 
-	'header' => 'Administrative Section',
+	'header' => 'Administrative Data <br> Control Panel',
+	'email' => 'E-Mail Address',
+	'password' => 'Password',
     'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 	'form_header' => 'Sign in to start your session',

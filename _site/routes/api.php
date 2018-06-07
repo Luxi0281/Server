@@ -21,7 +21,8 @@ Route::get('users/{user}', 'UsersAPIController@show');
 
 Route::middleware('api')->get('{language_code}/getFunds', function ($language_code){
 	
-	 $funds = DB::table('languages')
+	
+	$funds = DB::table('languages')
         ->select(
             'funds.id',
             'languages.language_code',
@@ -65,9 +66,12 @@ Route::middleware('api')->get('{language_code}/getFunds', function ($language_co
             $join->on('country_translations.country_id', '=', 'countries.id');
             $join->on('languages.id', '=', 'country_translations.language_id');
         })
-		->where('language_code', '=', $language_code)
+		//->where('language_code', '=', $language_code)
+		->where([
+		['funds.id', '!=', 20],
+		['language_code', '=', $language_code]
+		])
         ->get();
-		
 		return response()->json($funds);
 });
 

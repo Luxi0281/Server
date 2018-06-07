@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Administrative Section</title>
+    <title>Administrative Data Control Panel</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
     <!-- Bootstrap 3.3.7 -->
@@ -13,24 +13,16 @@
 
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+	<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
     <!-- Theme style -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.2/css/AdminLTE.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.2/css/skins/_all-skins.min.css">
 
-    <!-- iCheck -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/skins/square/_all.css">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css">
-
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-
     <style>
 
         span {
             font-weight: bold;
-            text-decoration: underline;
         }
 
         .skin-blue .main-header .navbar {
@@ -61,35 +53,43 @@
         {
             text-align: center;
         }
+		
+		a:hover, a:visited, a:link, a:active
+		{
+			text-decoration: none !important;
+		}
     </style>
-
     @yield('css')
 </head>
 
-<body class="skin-blue sidebar-mini">
+<body class="skin-green-light sidebar-mini">
 @if (!Auth::guest())
     <div class="wrapper">
         <!-- Main Header -->
-        <header class="main-header">
+<header class="main-header">
 
-            <!-- Logo -->
-            <a href="{!! url('admin/home') !!}" class="logo">
-                <b>Admin Section</b>
-            </a>
+    <!-- Logo -->
+    <a href="{!! url('admin/home') !!}" class="logo" style="text-decoration: none;">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>DCP</b></span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>Data Control Panel</b></span>
+    </a>
 
-            <!-- Header Navbar -->
-            <nav class="navbar navbar-dark bg-dark" role="navigation">
-                <!-- Sidebar toggle button-->
-
-                <!-- Navbar Right Menu -->
-                <div class="navbar-custom-menu navbar-dark bg-dark">
-                    <ul class="nav navbar-nav">
-                        <!-- User Account Menu -->
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top" role="navigation">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+      <!-- Navbar Right Menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
                         <li class="dropdown user user-menu">
                             <!-- Menu Toggle Button -->
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <!-- The user image in the navbar-->
-                                <img src="https://i.pinimg.com/originals/6b/84/23/6b8423c6c6b31415714ebb12c6c55478.png"
+                                <img src="{!! Auth::user()->avatar !!}"
                                      class="user-image" alt="User Image"/>
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
                                 <span class="hidden-xs">{!! Auth::user()->name !!}</span>
@@ -98,8 +98,7 @@
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
                                 <li class="user-header">
-                                    <img src="https://i.pinimg.com/originals/6b/84/23/6b8423c6c6b31415714ebb12c6c55478.png"
-                                         class="img-circle" alt="User Image"/>
+                                    <img src="{!! Auth::user()->avatar !!}" class="img-circle" alt="User Image"/>
                                     <p>
                                         {!! Auth::user()->name !!}
                                         <small>Server Administration </small>
@@ -108,11 +107,10 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="{{ url('/') }}" class="btn btn-default btn-flat">Back to main page</a>
+                                        <a href="{{ url('/') }}" class="btn btn-primary">Back to main page</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="{!! url('/logout') !!}" class="btn btn-default btn-flat"
-                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <a href="{!! url('/logout') !!}" class="btn btn-danger" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                             Sign out
                                         </a>
                                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
@@ -122,10 +120,14 @@
                                 </li>
                             </ul>
                         </li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
+          <!-- Control Sidebar Toggle Button -->
+          <li>
+            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
 
         <!-- Left side column. contains the logo and sidebar -->
         @include('layouts.sidebar')
@@ -133,12 +135,6 @@
         <div class="content-wrapper">
             @yield('content')
         </div>
-
-        <!-- Main Footer -->
-        <footer class="main-footer" style="max-height: 100px;text-align: center">
-            <strong>Copyright © 2018 <a href="#">Luxi & Nash Company</a>.</strong> All rights reserved.
-        </footer>
-
     </div>
 @else
     <nav class="navbar navbar-default navbar-static-top">
@@ -186,7 +182,10 @@
     <!-- jQuery 3.1.1 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+	<script>
+		$.widget.bridge('uibutton', $.ui.button)
+	</script>
     <!-- AdminLTE App -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.2/js/adminlte.min.js"></script>
 

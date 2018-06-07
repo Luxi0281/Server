@@ -11,12 +11,16 @@ return [
     | 
     */
 
+	'pageTitle' => 'Charity ',
+	'about' => 'About the organization: ',
 	'fund' => 'Charity ',
+	'info' => 'Charity Information',
 	'link' => 'Official Site Link:',
-	'takesPlace' => 'Takes place at:',
-	'address' => 'Address:',
-	'mapLocation' => 'Map Location:',
-	'description' => 'Description:',
-	'email' => 'E-Mail Address:',
-	'phone' => 'Phone Number:',
+	'country' => 'Country',
+	'provinceState' => 'Province/State',
+	'city' => 'City',
+	'legalAddress' => 'Legal Address:',
+	'mapLocation' => 'Map Location',
+	'phone' => 'Phone Number',
+	'email' => 'E-Mail Address'
 ];
